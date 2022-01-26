@@ -80,8 +80,44 @@ public class Java_Language_Construct_Hometask {
             return n;
         }
     }
-    */
+
     //Question-8
+    //Question-9
+    public static int maxBlock(String str) {
+        int count = 0;
+        int max = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (i == 0) {
+                count++;
+                max = count;
+            } else if (str.charAt(i) == str.charAt(i - 1)) {
+                count++;
+                if (max < count) {
+                    max = count;
+                }
+            } else {
+                count = 1;
+            }
+        }
+        return max;
+    }
+    */
+    //Question -10
+    public static int sumNumbers(String str) {
+        int sum=0;
+        String curr="";
+        for(int i=0;i<str.length();i++){
+            if(Character.isDigit(str.charAt(i))){
+                curr=curr+Character.toString(str.charAt(i));
+            }else if(curr!="") {
+                sum=sum+Integer.parseInt(curr);
+                curr="";
+            }if(curr!="" && i==str.length()-1){
+                sum=sum+Integer.parseInt(curr);
+            }
+        }
+        return sum;
+    }
 
 
 
@@ -156,29 +192,19 @@ public class Java_Language_Construct_Hometask {
         System.out.println("Enter b");
         int b4=sc.nextInt();
         System.out.println("Required output for sumLimit:"+Java_Language_Construct_Hometask.sumLimit(a4,b4));
+
+
+        //Question-9
+        System.out.println("Enter string");
+        String str=sc.nextLine();
+        System.out.println("Required output for maxBlock:"+Java_Language_Construct_Hometask.sumLimit(str));
+
         */
 
-        //Question-8
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //Question -10
+        System.out.println("Enter string:");
+        String str1=sc.nextLine();
+        System.out.println("Required output for maxBlock:"+Java_Language_Construct_Hometask.sumNumbers(str1));
     }
 
 }
