@@ -1,4 +1,4 @@
-package in.cravejava.app;
+package com.maventask.app;
 
 /**
  * Hello world!
