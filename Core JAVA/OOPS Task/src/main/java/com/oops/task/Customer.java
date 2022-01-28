@@ -3,10 +3,10 @@ package com.oops.task;
 public class Customer {
 
     String name;
-    Car car;
+    Sweets sweets;
 
     int getmaxCost(){
-        int maxCost= car.mahindra.maxCost+car.othercars.maxCost;
+        int maxCost= sweets.chocolate.maxWeight+sweets.othersweets.maxWeight;
         return maxCost;
     }
 
@@ -18,11 +18,11 @@ public class Customer {
         this.name = name;
     }
 
-    public Car getCar() {
-        return car;
+    public Sweets getCar() {
+        return sweets;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setCar(Sweets car) {
+        this.sweets = car;
     }
 }

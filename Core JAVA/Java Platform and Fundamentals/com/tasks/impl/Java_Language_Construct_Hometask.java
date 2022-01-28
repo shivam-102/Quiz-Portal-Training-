@@ -79,9 +79,22 @@ public class Java_Language_Construct_Hometask {
         else{
             return n;
         }
+
+
     }
 
+
+
     //Question-8
+
+    public static String withoutString(String base, String remove) {
+    base=base.replace(remove.toUpperCase(),"");
+    base=base.replace(remove.toLowerCase(),"");
+    return base.replace(remove,"");
+}
+
+
+
     //Question-9
     public static int maxBlock(String str) {
         int count = 0;
@@ -193,6 +206,14 @@ public class Java_Language_Construct_Hometask {
         int b4=sc.nextInt();
         System.out.println("Required output for sumLimit:"+Java_Language_Construct_Hometask.sumLimit(a4,b4));
 
+        //Question-8
+        System.out.println("Enter base string:");
+        String base=sc.nextLine();
+        System.out.println("Enter remove string:");
+        String remove=sc.nextLine();
+        System.out.println("Required output for maxBlock:"+Java_Language_Construct_Hometask.withoutString(base,remove));
+
+
 
         //Question-9
         System.out.println("Enter string");
@@ -205,6 +226,9 @@ public class Java_Language_Construct_Hometask {
         System.out.println("Enter string:");
         String str1=sc.nextLine();
         System.out.println("Required output for maxBlock:"+Java_Language_Construct_Hometask.sumNumbers(str1));
+
+
+
     }
 
 }
