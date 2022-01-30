@@ -1,0 +1,5 @@
+
+N	java:S106"9Replace this use of System.out or System.err by a logger.(¸¹øè
+‚
+java:S1217
+"`Call the method Thread.start() to execute the content of the run() method in a dedicated thread.(Ñ‘ş‡ûÿÿÿÿ8·íÖê/
