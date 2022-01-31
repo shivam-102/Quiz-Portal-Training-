@@ -1,0 +1,56 @@
+
+E
+java:S3740"/Provide the parametrized type for this generic.(ê²“
+E
+java:S1197"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(İ†Õ°
+S	java:S106"9Replace this use of System.out or System.err by a logger.(¡¹—Òøÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(ĞÀâš
+S	java:S106"9Replace this use of System.out or System.err by a logger.(´‹¹öşÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(îÿÔ…
+M	java:S106"9Replace this use of System.out or System.err by a logger.(ƒÚáB
+S	java:S1060"9Replace this use of System.out or System.err by a logger.(§áüÿÿÿÿ
+S	java:S1062"9Replace this use of System.out or System.err by a logger.(“ÃğÂüÿÿÿÿ
+N	java:S106B"9Replace this use of System.out or System.err by a logger.(È¦»§
+M	java:S106G"9Replace this use of System.out or System.err by a logger.(Š†ì
+N	java:S106H"9Replace this use of System.out or System.err by a logger.(œ”©Ã
+M	java:S106S"9Replace this use of System.out or System.err by a logger.(Š†ì
+N	java:S106T"9Replace this use of System.out or System.err by a logger.(œ”©Ã
+S	java:S106a"9Replace this use of System.out or System.err by a logger.(›úÃ®øÿÿÿÿ
+Q	java:S125_"<This block of commented-out lines of code should be removed.(Ä‹Áè
+M	java:S106e"9Replace this use of System.out or System.err by a logger.(Š†ì
+N	java:S106f"9Replace this use of System.out or System.err by a logger.(œ”©Ã
+S	java:S106s"9Replace this use of System.out or System.err by a logger.(ŸÎôãøÿÿÿÿ
+N	java:S106u"9Replace this use of System.out or System.err by a logger.(œ”©Ã
+T	java:S106"9Replace this use of System.out or System.err by a logger.(¦Ã€òşÿÿÿÿ
+O	java:S106ƒ"9Replace this use of System.out or System.err by a logger.(œ”©Ã
+T	java:S106"9Replace this use of System.out or System.err by a logger.(­ƒ¾Îüÿÿÿÿ
+O	java:S106’"9Replace this use of System.out or System.err by a logger.(œ”©Ã
+T	java:S106¡"9Replace this use of System.out or System.err by a logger.(É½—Éúÿÿÿÿ
+N	java:S106¥"9Replace this use of System.out or System.err by a logger.(Š†ì
+O	java:S106¦"9Replace this use of System.out or System.err by a logger.(œ”©Ã
+j	java:S116­"ORename this field "PhNo" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚†¡…ûÿÿÿÿ
+j	java:S116¸"ORename this field "PhNo" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚†¡…ûÿÿÿÿ
+p
+java:S1210¿"YOverride "equals(Object obj)" to comply with the contract of the "compareTo(T o)" method.(ø›¡
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ô¨ıÿÿÿÿ
+o
+java:S2293""YReplace the type specification in this constructor call with the diamond operator ("<>").(ş²Ñ
+o
+java:S22936"YReplace the type specification in this constructor call with the diamond operator ("<>").(Âğ
+o
+java:S2293W"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯–êÕ
+o
+java:S2293i"YReplace the type specification in this constructor call with the diamond operator ("<>").(„™¾ğ
+n
+java:S2293x"YReplace the type specification in this constructor call with the diamond operator ("<>").(œœà
+u
+java:S2293†"YReplace the type specification in this constructor call with the diamond operator ("<>").(³Øé×ÿÿÿÿÿ
+p
+java:S2293•"YReplace the type specification in this constructor call with the diamond operator ("<>").(¶¯úÉ
+_
+java:S1192G"JDefine a constant instead of duplicating this literal " Details:" 4 times.(Š†ì
+g	java:S117®"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú“ƒ–
+l	java:S117¹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ìùß®üÿÿÿÿ
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(º·˜âúÿÿÿÿ

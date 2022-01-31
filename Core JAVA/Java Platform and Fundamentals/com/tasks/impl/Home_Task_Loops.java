@@ -2,52 +2,45 @@ package com.tasks.impl;
 
 public class Home_Task_Loops {
     public static void main(String [] args){
-        int number_of_rows=5;
+        int multiply1=1,number_of_rows=5;
         //task 1 using while loop
-        int x1=1,i=1,j=1,c=0;
-        while(i<=number_of_rows){
-            j=1;
+        int pointer1=1,pointer2=1,counter=0;
+        while(pointer1<=number_of_rows){
+            pointer2=1;
 
-            while(j<=i){
-                System.out.print(c+" ");
-                c+=1;
-                j++;
+            while(pointer2<=pointer1){
+                System.out.print(counter*multiply1+" ");
+                counter+=1;
+                pointer2++;
 
             }
             System.out.println();
-            i++;
+            pointer1++;
         }
         //task 2 using for loop
-        c=0;
-        int x2=2;
-        for(i=1;i<=number_of_rows;i++){
-            for(j=1;j<=i;j++){
-                System.out.print(c*x2+" ");
-                c++;
+        counter=0;
+        int multiply2=2;
+        for(pointer1=1;pointer1<=number_of_rows;pointer1++){
+            for(pointer2=1;pointer2<=pointer1;pointer2++){
+                System.out.print(counter*multiply2+" ");
+                counter++;
             }
             System.out.println();
         }
-
         //using do-while loop
-        int x3=3;
-        c=0;
-        i=1;
-        j=1;
+        int multiply3=3;
+        counter=0;
+        pointer1=1;
+        pointer2=1;
         do{
-            j=1;
+            pointer2=1;
             do{
-                System.out.print(c*x3+" ");
-                c+=1;
-                j++;
-            }while(j<=i);
-            i++;
+                System.out.print(counter*multiply3+" ");
+                counter+=1;
+                pointer2++;
+            }while(pointer2<=pointer1);
+            pointer1++;
             System.out.println();
-
-
-        }while(i<=number_of_rows);
-
-
-
-
+        }while(pointer1<=number_of_rows);
     }
 }

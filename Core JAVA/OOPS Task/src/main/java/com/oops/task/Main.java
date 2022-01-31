@@ -1,40 +1,34 @@
 package com.oops.task;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
-
-
 public class Main {
-    public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
         Chocolate_Weights weights=new Chocolate_Weights();
         System.out.println("Enter the number of customers");
-        int n=sc.nextInt();
-        while(n>0){
-
-
-        Customer cust=new Customer();
-        Chocolate chocolate=new Chocolate();
-        OtherSweets otc=new OtherSweets();
-
-        System.out.println("Enter Name of the customer");
-        String nam=sc.next();
-        cust.setName(nam);
+        int number=scanner.nextInt();
+        while(number>0){
+            Customer customer=new Customer();
+            Chocolate chocolate=new Chocolate();
+            OtherSweets otherSweets=new OtherSweets();
+            System.out.println("Enter Name of the customer");
+        String nam=scanner.next();
+        customer.setName(nam);
         System.out.println("Enter weight of the chocolate");
-        chocolate.setmaxWeight(sc.nextInt());
+        chocolate.setmaxWeight(scanner.nextInt());
         System.out.println("Enter weight of other sweets");
-        otc.setmaxWeight(sc.nextInt());
-        int sum = chocolate.getmaxWeight() + otc.getmaxWeight();
+        otherSweets.setmaxWeight(scanner.nextInt());
+        int sum = chocolate.getmaxWeight() + otherSweets.getmaxWeight();
         weights.addWeight(nam,sum);
-        System.out.println("Name of the customer : " + cust.name);
+        System.out.println("Name of the customer : " + customer.name);
         System.out.println("Total weight of sweets : " + sum + "gms");
         System.out.println();
-        n--;
+        number--;
     }
         System.out.println("Today's sales: ");
         HashMap map=weights.sales();
         System.out.println(map.entrySet());
-        sc.close();
+        scanner.close();
     }
 }
 

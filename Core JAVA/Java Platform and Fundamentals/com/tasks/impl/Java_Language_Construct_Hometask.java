@@ -1,7 +1,5 @@
 package com.tasks.impl;
-
 import java.util.Scanner;
-
 public class Java_Language_Construct_Hometask {
     //declared this as static so that there would need to keep a object
     //Question-1
@@ -14,14 +12,12 @@ public class Java_Language_Construct_Hometask {
     }
 
     //Question-2
-    public static boolean truelyGreatNumber(int a,int b){
-        if((a==6)||(b==6)||(a+b==6)||(a-b==6))
+    public static boolean truelyGreatNumber(int value1,int value2){
+        if((value1==6)||(value2==6)||(value1+value2==6)||(value1-value2==6))
             return true;
         else
             return false;
-
-
-    }
+}
 
     //Question-3
     public static int teaParty(int tea, int candy) {
@@ -31,33 +27,30 @@ public class Java_Language_Construct_Hometask {
         return -1;
     }
     //Question-4
-    public static int blueTicket(int a, int b, int c) {
-        int p1=a+b;
-        int p2=b+c;
-        int p3=a+c;
-        if(p1==10||p2==10||p3==10){return 10;}
-        else if((p1-p2==10)||(p1-p3==10)){return 5;}
+    public static int blueTicket(int value1, int value2, int value3) {
+        int sum1=value1+value2;
+        int sum2=value2+value3;
+        int sum3=value1+value3;
+        if(sum1==10||sum2==10||sum3==10){return 10;}
+        else if((sum1-sum2==10)||(sum1-sum3==10)){return 5;}
         else{return 0;}
     }
-
     //Question 5
-    public static boolean inOrder(int a, int b, int c, boolean bOk) {
+    public static boolean inOrder(int val1, int val2, int val3, boolean bOk) {
         if(bOk){
-            if(c>b){return true;}
+            if(val3>val2){return true;}
             else{return false;}
         }
-        if(b>a && c>b){return true;}
+        if(val2>val1 && val3>val2){return true;}
         else{return false;}
     }
-
-
     //Question-6
-    public static boolean shareDigit(int a, int b) {
-        int ad=a/10;
-        int am=a%10;
-        int bd=b/10;
-        int bm=b%10;
-        if(ad==bd||ad==bm||am==bd||am==bm)
+    public static boolean shareDigit(int val1, int val2) {
+        int val1division=val1/10;
+        int val1modulus=val1%10;
+        int val2division=val2/10;
+        int val2modulus=val2%10;
+        if(val1division==val2division||val1division==val2modulus||val1modulus==val2division||val1modulus==val2modulus)
         {
             return true;
         }
@@ -66,25 +59,18 @@ public class Java_Language_Construct_Hometask {
         }
     }
 
-
-
-    //Question-7
-    public static int sumLimit(int a, int b) {
-        int n=a+b;
-        String n_value=String.valueOf(n);
-        String a_value=String.valueOf(a);
-        if(n_value.length()>a_value.length()){
-            return a;
+   //Question-7
+    public static int sumLimit(int value1, int value2) {
+        int sum=value1+value2;
+        String sum_value=String.valueOf(sum);
+        String value1_value=String.valueOf(value1);
+        if(sum_value.length()>value1_value.length()){
+            return value1;
         }
         else{
-            return n;
+            return sum;
         }
-
-
-    }
-
-
-
+  }
     //Question-8
 
     public static String withoutString(String base, String remove) {
@@ -92,18 +78,15 @@ public class Java_Language_Construct_Hometask {
     base=base.replace(remove.toLowerCase(),"");
     return base.replace(remove,"");
 }
-
-
-
     //Question-9
-    public static int maxBlock(String str) {
+    public static int maxBlock(String string) {
         int count = 0;
         int max = 0;
-        for (int i = 0; i < str.length(); i++) {
-            if (i == 0) {
+        for (int pointer = 0; pointer < string.length(); pointer++) {
+            if (pointer == 0) {
                 count++;
                 max = count;
-            } else if (str.charAt(i) == str.charAt(i - 1)) {
+            } else if (str.charAt(pointer) == str.charAt(pointer - 1)) {
                 count++;
                 if (max < count) {
                     max = count;
@@ -118,117 +101,97 @@ public class Java_Language_Construct_Hometask {
     //Question -10
     public static int sumNumbers(String str) {
         int sum=0;
-        String curr="";
+        String current="";
         for(int i=0;i<str.length();i++){
             if(Character.isDigit(str.charAt(i))){
-                curr=curr+Character.toString(str.charAt(i));
-            }else if(curr!="") {
-                sum=sum+Integer.parseInt(curr);
-                curr="";
-            }if(curr!="" && i==str.length()-1){
-                sum=sum+Integer.parseInt(curr);
+                current=current+Character.toString(str.charAt(i));
+            }else if(current!="") {
+                sum=sum+Integer.parseInt(current);
+                current="";
+            }if(current!="" && i==str.length()-1){
+                sum=sum+Integer.parseInt(current);
             }
         }
         return sum;
     }
-
-
-
     public static void main(String[] args){
-        Scanner sc=new Scanner(System.in);
+        Scanner scanner=new Scanner(System.in);
         //Question 1
         /*
         System.out.println("Enter your speed");
-        int speed=sc.nextInt();
+        int speed=scanner.nextInt();
         System.out.println("Is it your birthday?(true/false)");
-        boolean isBirthday = sc.nextBoolean();
+        boolean isBirthday = scanner.nextBoolean();
         System.out.println(Java_Language_Construct_Hometask.caughtSpeeding(speed,isBirthday));
-
         //Question 2 - Truely great Number
         System.out.println("Enter a");
-        int a=sc.nextInt();
+        int variable1=scanner.nextInt();
         System.out.println("Enter b");
-        int b=sc.nextInt();
-        System.out.println(Java_Language_Construct_Hometask.truelyGreatNumber(Math.abs(a),Math.abs(b)));
-
-
-
+        int variable2=scanner.nextInt();
+        System.out.println(Java_Language_Construct_Hometask.truelyGreatNumber(Math.abs(variable1),Math.abs(variable2)));
         //Question 3
         System.out.println("Enter tea value:");
-        int tea=sc.nextInt();
+        int tea=scanner.nextInt();
         System.out.println("Enter candy value:");
-        int candy=sc.nextInt();
-        int r= Java_Language_Construct_Hometask.teaParty(tea,candy);
-        switch(r){
+        int candy=scanner.nextInt();
+        int response= Java_Language_Construct_Hometask.teaParty(tea,candy);
+        switch(response){
             case 0: System.out.println("bad");
             break;
             case 1: System.out.println("good");
             break;
             case 2: System.out.println("great");
             break;
-            default: System.out.println("did'nt get proper value");
+            default: System.out.println("Did not get proper value");
         }
         //Question - 4
-
         System.out.println("Enter a");
-        int a1=sc.nextInt();
+        int number1=scanner.nextInt();
         System.out.println("Enter b");
-        int b1=sc.nextInt();
+        int number2=scanner.nextInt();
         System.out.println("Enter c");
-        int c1=sc.nextInt();
-        System.out.println("Required output:"+Java_Language_Construct_Hometask.blueTicket(a1,b1,c1));
-
-
+        int number3=scanner.nextInt();
+        System.out.println("Required output:"+Java_Language_Construct_Hometask.blueTicket(number1,number2,number3));
         //Question -5
         System.out.println("Enter a");
-        int a2=sc.nextInt();
+        int aVar=scanner.nextInt();
         System.out.println("Enter b");
-        int b2=sc.nextInt();
+        int bVar=scanner.nextInt();
         System.out.println("Enter c");
-        int c2=sc.nextInt();
+        int cVar=scanner.nextInt();
         System.out.println("Enter bOk value:");
-        boolean bOk=sc.nextBoolean();
-        System.out.println("Required output of inorder problem:"+Java_Language_Construct_Hometask.inOrder(a2,b2,c2,bOk));
-
-
+        boolean bOk=scanner.nextBoolean();
+        System.out.println("Required output of inorder problem:"+Java_Language_Construct_Hometask.inOrder(aVar,bVar,cVar,bOk));
         //Question -6
         System.out.println("Enter a");
-        int a3=sc.nextInt();
+        int value1=scanner.nextInt();
         System.out.println("Enter b");
-        int b3=sc.nextInt();
-        System.out.println("Required output for shareDigit:"+Java_Language_Construct_Hometask.shareDigit(a3,b3));
-
-
+        int value2=scanner.nextInt();
+        System.out.println("Required output for shareDigit:"+Java_Language_Construct_Hometask.shareDigit(value1,value2));
         //Question-7
         System.out.println("Enter a");
-        int a4=sc.nextInt();
+        int value4=scanner.nextInt();
         System.out.println("Enter b");
-        int b4=sc.nextInt();
-        System.out.println("Required output for sumLimit:"+Java_Language_Construct_Hometask.sumLimit(a4,b4));
+        int value5=scanner.nextInt();
+        System.out.println("Required output for sumLimit:"+Java_Language_Construct_Hometask.sumLimit(value4,value5));
 
         //Question-8
         System.out.println("Enter base string:");
-        String base=sc.nextLine();
+        String base=scanner.nextLine();
         System.out.println("Enter remove string:");
-        String remove=sc.nextLine();
+        String remove=scanner.nextLine();
         System.out.println("Required output for maxBlock:"+Java_Language_Construct_Hometask.withoutString(base,remove));
-
-
-
         //Question-9
         System.out.println("Enter string");
-        String str=sc.nextLine();
-        System.out.println("Required output for maxBlock:"+Java_Language_Construct_Hometask.sumLimit(str));
+        String string=scanner.nextLine();
+        System.out.println("Required output for maxBlock:"+Java_Language_Construct_Hometask.sumLimit(string));
 
         */
 
         //Question -10
         System.out.println("Enter string:");
-        String str1=sc.nextLine();
-        System.out.println("Required output for maxBlock:"+Java_Language_Construct_Hometask.sumNumbers(str1));
-
-
-
+        String string1=scanner.nextLine();
+        System.out.println("Required output for maxBlock:"+Java_Language_Construct_Hometask.sumNumbers(string1));
     }
 
 }

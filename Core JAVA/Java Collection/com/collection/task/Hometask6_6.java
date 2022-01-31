@@ -2,13 +2,10 @@ package com.collection.task;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.*;
-
 class Printer {
-
     public static void printArray(Object[] obj){
         System.out.println(Arrays.toString(obj));
     }
-
 }
 public class Hometask6_6 {
     public static void main(String args[]){

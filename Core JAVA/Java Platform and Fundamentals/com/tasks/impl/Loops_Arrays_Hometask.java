@@ -1,18 +1,17 @@
 package com.tasks.impl;
 import java.util.Scanner;
-
 public class Loops_Arrays_Hometask {
     //Question 1
     /*
-    public static int maxSpan(int[] nums) {
-        int l=nums.length;
-        int span=0,c=0;
-        for(int i=0;i<l;i++){
-            for(int j=0;j<l;j++){
-                if(nums[i]==nums[j]){
-                    c=j-i+1;
-                    if(c>span)
-                        span=c;
+    public static int maxSpan(int[] numbers) {
+        int len=numbers.length;
+        int span=0,count=0;
+        for(int pointer=0;pointer<len;pointer++){
+            for(int pointer1=0;pointer1<len;pointer1++){
+                if(numbers[pointer]==numbers[pointer1]){
+                    count=pointer1-pointer+1;
+                    if(count>span)
+                        span=count;
                 }
             }
         }
@@ -21,124 +20,152 @@ public class Loops_Arrays_Hometask {
 
 
     //Question 2
-    public static boolean canBalance(int[] nums) {
-        int l=nums.length;
-
-        int s1=0,s2=0;
-        for(int i=0;i<l;i++){
-            s1=s1+nums[i];
-            s2=0;
-            for(int j=l-1;j>i;j--){
-                s2+=nums[j];
+    public static boolean canBalance(int[] numbers) {
+        int len=numbers.length;
+        int sum1=0,sum2=0;
+        for(int pointer=0;pointer<len;pointer++){
+            sum1=sum1+numbers[pointer];
+            sum2=0;
+            for(int pointer1=len-1;pointer1>pointer;pointer1--){
+                sum2+=numbers[pointer1];
             }
-            if(s1==s2)
+            if(sum1==sum2)
                 return true;
-
         }
         return false;
-
-    }
-
-
+}
     //Question 3
-    public static int countClumps(int[] nums) {
-        int l=nums.length;
-        int c=1,clu=0;
-        for(int i=0;i<l;i++){
-            for(int j=i+1;j<l;j++){
-                if(nums[i]==nums[j]){
-                    c++;
+    public static int countClumps(int[] numbers) {
+        int len=numbers.length;
+        int counter=1,clu=0;
+        for(int pointer=0;pointer<len;pointer++){
+            for(int pointer1=pointer+1;pointer1<len;pointer1++){
+                if(numbers[pointer]==numbers[pointer1]){
+                    counter++;
                 }
                 else{
-                    if(c>=2)
+                    if(counter>=2)
                         clu++;
-                    i=j;
+                    pointer=pointer1;
                 }
 
             }
-            if(c==l){
+            if(counter==len){
                 clu=1;
             }
         }
         return clu;
-    }
+        }
     */
 
     //Question 4
+    public int maxMirror(int[] numbers) {
+        int temp = 0, max = 0, count = 0;
+        int len = numbers.length;
+        if(len == 1) return 1;
+        for(int pointer=0;pointer<len; pointer++) {
+            count = 0;
+            temp = pointer;
+            for(int pointer2 =(len-1);pointer2>=temp;pointer2--){
+                if(numbers[temp] == numbers[pointer2]) {
+                    if(temp == pointer2) {
+                        count++;
+                        if(count == 1) count++;
+                        else count = (count * 2) -1;
+                        temp++;
+                        continue;
+                    }
+                    count++;
+                    temp++;
+                }
+                else if(count > 0) {
+                    if(max < count) max = count;
+                    temp = pointer;
+                    count = 0;
+                }
+            }
+            if(max < count) max = count;
+        }
+        return max;
+    }
     //Question 5
 
     public static boolean linearIn(int[] outer, int[] inner) {
-        int c=0,cu=0;
-        for(int i=0;i<inner.length;i++){
-            c=0;
-            for(int j=0;j<outer.length;j++){
-                if(inner[i]==outer[j]){
-                    c++;
+        int count=0,cursor=0;
+        for(int pointer=0;pointer<inner.length;pointer++){
+            count=0;
+            for(int pointer1=0;pointer1<outer.length;pointer1++){
+                if(inner[pointer]==outer[pointer1]){
+                    count++;
                 }
             }
-            if(c>0)
-                cu++;
+            if(count>0)
+                cursor++;
         }
-        if(cu==inner.length)
+        if(cursor==inner.length)
             return true;
         else
             return false;
     }
     public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
+        Scanner scanner=new Scanner(System.in);
         //Question 1
         /*
         System.out.println("Enter array length:");
-        int l=sc.nextInt();
+        int length=scanner.nextInt();
         System.out.println("Enter array values:");
-        int arr[]=new int[l];
-        for(int i=0;i<l;i++){
-            arr[i]=sc.nextInt();
+        int array[]=new int[length];
+        for(int pointer=0;pointer<length;pointer++){
+            array[pointer]=scanner.nextInt();
         }
-        System.out.println("The result for maxSpan:"+Loops_Arrays_Hometask.maxSpan(arr));
+        System.out.println("The result for maxSpan:"+Loops_Arrays_Hometask.maxSpan(array));
 
 
         //Question 2
         System.out.println("Enter array length:");
-        int le=sc.nextInt();
+        int length=scanner.nextInt();
         System.out.println("Enter array values:");
-        int arr[]=new int[le];
-        for(int i=0;i<le;i++){
-            arr[i]=sc.nextInt();
+        int array[]=new int[length];
+        for(int pointer=0;pointer<length;pointer++){
+            array[pointer]=scanner.nextInt();
         }
-        System.out.println("The result for maxSpan:"+Loops_Arrays_Hometask.canBalance(arr));
+        System.out.println("The result for maxSpan:"+Loops_Arrays_Hometask.canBalance(array));
 
         //Question 3
         System.out.println("Enter array length:");
-        int len=sc.nextInt();
+        int length=scanner.nextInt();
         System.out.println("Enter array values:");
-        int a[]=new int[len];
-        for(int i=0;i<len;i++){
-            a[i]=sc.nextInt();
+        int array[]=new int[length];
+        for(int pointer=0;pointer<length;pointer++){
+            array[pointer]=scanner.nextInt();
         }
-        System.out.println("The result for maxSpan:"+Loops_Arrays_Hometask.countClumps(a));
-        */
+        System.out.println("The result for maxSpan:"+Loops_Arrays_Hometask.countClumps(array));
+
         //Question 4
+        System.out.println("Enter array1 length:");
+        int lengthX=scanner.nextInt();
+        int array[]=new int[lengthX];
+        for(int pointer=0;pointer<length1;pointer++){
+            array[pointer]=scanner.nextInt();
+        }
+        System.out.println("The result for maxSpan:"+Loops_Arrays_Hometask.maxMirror(array));
+
+         */
 
         //Question 5
         System.out.println("Enter array1 length:");
-        int le1=sc.nextInt();
+        int length1=scanner.nextInt();
         System.out.println("Enter array2 length:");
-        int le2=sc.nextInt();
+        int length2=scanner.nextInt();
         System.out.println("Enter array values:");
-        int outer[]=new int[le1];
-        int inner[]=new int[le2];
-        for(int i=0;i<le1;i++){
-            outer[i]=sc.nextInt();
+        int outer[]=new int[length1];
+        int inner[]=new int[length2];
+        for(int pointer=0;pointer<length1;pointer++){
+            outer[pointer]=scanner.nextInt();
         }
-        for(int i=0;i<le2;i++){
-            inner[i]=sc.nextInt();
+        for(int pointer=0;pointer<length2;pointer++){
+            inner[pointer]=scanner.nextInt();
         }
         System.out.println("The result for maxSpan:"+Loops_Arrays_Hometask.linearIn(outer,inner));
-
-
-
-
-
     }
 }

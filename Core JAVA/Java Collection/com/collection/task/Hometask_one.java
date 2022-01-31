@@ -1,76 +1,73 @@
 package com.collection.task;
-
 import java.util.*;
 public class Hometask_one {
-
     public static void main(String args[]){
-
-        ArrayList<String> arr=new ArrayList<String>(5);
+        ArrayList<String> arrayList=new ArrayList<String>(5);
         //Adding elements in arraylist
-        arr.add("Republic Day");
-        arr.add("Independence Day");
-        arr.add("Gandhi Jayanthi");
-        arr.add("Mahavir Jayanthi");
-        arr.add("Good Friday");
+        arrayList.add("Republic Day");
+        arrayList.add("Independence Day");
+        arrayList.add("Gandhi Jayanthi");
+        arrayList.add("Mahavir Jayanthi");
+        arrayList.add("Good Friday");
         //Traversing through an arrayList
-        Iterator itr=arr.iterator();
+        Iterator iterator=arrayList.iterator();
         System.out.println("OUTPUT FROM ARRAYLIST : ");
-        while(itr.hasNext()){
-            System.out.println(itr.next());
+        while(iterator.hasNext()){
+            System.out.println(iterator.next());
         }
         //Sorting a ArrayList
-        Collections.sort(arr);
+        Collections.sort(arrayList);
         System.out.println("In sorted order:");
-        for(String i:arr){
+        for(String i:arrayList){
             System.out.println(i);
         }
         //Element iterating in reverse order
-        ListIterator<String> l1=arr.listIterator(arr.size());
+        ListIterator<String> listIterator=arrayList.listIterator(arrayList.size());
         System.out.println("In reverse order:");
-        while(l1.hasPrevious())
+        while(listIterator.hasPrevious())
         {
-            String str=l1.previous();
+            String str=listIterator.previous();
             System.out.println(str);
         }
 
         //Linked List
-        LinkedList<Telephone> ll = new LinkedList<Telephone>();
+        LinkedList<Telephone> linkedList = new LinkedList<Telephone>();
 
         //Demonstrating the usage of linked list
-        Telephone t1=new Telephone("Shivam",123456);
-        Telephone t2=new Telephone("Azhar",453683);
-        Telephone t3=new Telephone("Aanchal",3488934);
-        Telephone t4=new Telephone("Bob",487492);
-        Telephone t5=new Telephone("John",154321);
-        ll.add(t1);
-        ll.add(t2);
-        ll.add(t3);
-        ll.add(t4);
-        ll.add(t5);
-        ll.remove(t4);
+        Telephone telephone1=new Telephone("Shivam",123456);
+        Telephone telephone2=new Telephone("Azhar",453683);
+        Telephone telephone3=new Telephone("Aanchal",3488934);
+        Telephone telephone4=new Telephone("Bob",487492);
+        Telephone telephone5=new Telephone("John",154321);
+        linkedList.add(telephone1);
+        linkedList.add(telephone2);
+        linkedList.add(telephone3);
+        linkedList.add(telephone4);
+        linkedList.add(telephone5);
+        linkedList.remove(telephone4);
         System.out.println("OUTPUT FROM LINKEDLIST : ");
-        for(Telephone t:ll){
+        for(Telephone t:linkedList){
             System.out.println(t.name+" "+t.PhNo);
 
         }
         //HashMap
-        Map<Integer,Bo> map=new HashMap<Integer,Bo>();
-        Bo b1=new Bo("Shivam",123456);
-        Bo b2=new Bo("Azhar",453683);
-        Bo b3=new Bo("Aanchal",3488934);
-        Bo b4=new Bo("Bob",487492);
-        Bo b5=new Bo("John",154321);
+        Map<Integer,Telephone1> map=new HashMap<Integer,Telephone1>();
+        Telephone1 buddy1=new Telephone1("Shivam",123456);
+        Telephone1 buddy2=new Telephone1("Azhar",453683);
+        Telephone1 buddy3=new Telephone1("Aanchal",3488934);
+        Telephone1 buddy4=new Telephone1("Bob",487492);
+        Telephone1 buddy5=new Telephone1("John",154321);
 
-        map.put(1,b1);
-        map.put(2,b2);
-        map.put(3,b3);
-        map.put(4,b4);
-        map.put(5,b5);
+        map.put(1,buddy1);
+        map.put(2,buddy2);
+        map.put(3,buddy3);
+        map.put(4,buddy4);
+        map.put(5,buddy5);
         System.out.println("OUTPUT FROM HASHMAP : ");
         //Traversing map
-        for(Map.Entry<Integer, Bo> entry:map.entrySet()){
+        for(Map.Entry<Integer, Telephone1> entry:map.entrySet()){
             int key=entry.getKey();
-            Bo b=entry.getValue();
+            Telephone1 b=entry.getValue();
             System.out.println(key+" Details:");
             System.out.println(b.name+" "+b.PhNo);
         }
@@ -78,106 +75,93 @@ public class Hometask_one {
         //map remove
         map.remove(4);
         //map replace
-        Bo b6=new Bo("Deepak",2973);
+        Telephone1 b6=new Telephone1("Deepak",2973);
         map.replace(5,b6);
-
-        for(Map.Entry<Integer, Bo> entry:map.entrySet()){
+        for(Map.Entry<Integer, Telephone1> entry:map.entrySet()){
             int key=entry.getKey();
-            Bo b=entry.getValue();
+            Telephone1 b=entry.getValue();
             System.out.println(key+" Details:");
             System.out.println(b.name+" "+b.PhNo);
         }
-
-
         //Linked HashMap
-
-        Map<Integer,Bo> lmap=new LinkedHashMap<Integer,Bo>();
-
-
-        lmap.put(1,b1);
-        lmap.put(2,b2);
-        lmap.put(3,b3);
-        lmap.put(4,b4);
-        lmap.put(5,b5);
-
-        lmap.remove(1);
-
+        Map<Integer,Telephone1> linkedHashMap=new LinkedHashMap<Integer,Telephone1>();
+        linkedHashMap.put(1,buddy1);
+        linkedHashMap.put(2,buddy2);
+        linkedHashMap.put(3,buddy3);
+        linkedHashMap.put(4,buddy4);
+        linkedHashMap.put(5,buddy5);
+        linkedHashMap.remove(1);
         //Fetching key
         //System.out.println("Keys: "+lmap.keySet());
         //Fetching value
         System.out.println("OUTPUT FROM LINKED HASHMAN : ");
-        for(Map.Entry<Integer, Bo> entry:lmap.entrySet()){
+        for(Map.Entry<Integer, Telephone1> entry:linkedHashMap.entrySet()){
             int key=entry.getKey();
-            Bo b=entry.getValue();
+            Telephone1 b=entry.getValue();
             System.out.println(key+" Details:");
             System.out.println(b.name+" "+b.PhNo);
         }
-
         //Hashset
-        HashSet<Bo> set=new HashSet<Bo>();
+        HashSet<Telephone1> set=new HashSet<Telephone1>();
         //adding elements
-        set.add(b1);
-        set.add(b2);
-        set.add(b3);
-        set.add(b4);
-        set.add(b5);
+        set.add(buddy1);
+        set.add(buddy2);
+        set.add(buddy3);
+        set.add(buddy4);
+        set.add(buddy5);
         //remove elements
-        set.remove(b3);
+        set.remove(buddy3);
         //After operations final set
         System.out.println("OUTPUT FROM HASHSET : ");
-        for(Bo b:set){
+        for(Telephone1 b:set){
             System.out.println(b.name+" "+b.PhNo);
         }
-
         //Linked Hashset
-        LinkedHashSet<Bo> linkedset= new LinkedHashSet<Bo>();
+        LinkedHashSet<Telephone1> linkedset= new LinkedHashSet<Telephone1>();
         //add elements
-        linkedset.add(b1);
-        linkedset.add(b2);
-        linkedset.add(b3);
-        linkedset.add(b4);
-        linkedset.add(b5);
+        linkedset.add(buddy1);
+        linkedset.add(buddy2);
+        linkedset.add(buddy3);
+        linkedset.add(buddy4);
+        linkedset.add(buddy5);
         //remove elements
-        linkedset.remove(b2);
+        linkedset.remove(buddy2);
         System.out.println("OUTPUT FROM LINKED HASHSET : ");
-        for(Bo b:linkedset){
+        for(Telephone1 b:linkedset){
             System.out.println(b.name+" "+b.PhNo);
         }
         //TreeSet
-        Set<Bo> tset=new TreeSet<Bo>();
+        Set<Telephone1> tset=new TreeSet<Telephone1>();
         //adding operations
-        tset.add(b1);
-        tset.add(b2);
-        tset.add(b3);
-        tset.add(b4);
-        tset.add(b5);
-
+        tset.add(buddy1);
+        tset.add(buddy2);
+        tset.add(buddy3);
+        tset.add(buddy4);
+        tset.add(buddy5);
         //remove values
-        tset.remove(b3);
+        tset.remove(buddy3);
         //Printing
         System.out.println("OUTPUT FROM TREESET : ");
-        for(Bo b:tset){
+        for(Telephone1 b:tset){
             System.out.println(b.name+" "+b.PhNo);
         }
 
-        Map<Integer,Bo> map1=new TreeMap<Integer,Bo>();
-
-        map1.put(11,b1);
-        map1.put(12,b2);
-        map1.put(13,b3);
-        map1.put(14,b4);
-        map1.put(15,b5);
+        Map<Integer,Telephone1> treeMap=new TreeMap<Integer,Telephone1>();
+        treeMap.put(11,buddy1);
+        treeMap.put(12,buddy2);
+        treeMap.put(13,buddy3);
+        treeMap.put(14,buddy4);
+        treeMap.put(15,buddy5);
         //replace an element
-        Bo b7=new Bo("Ashu", 82182);
-        map1.replace(13,b7);
+        Telephone1 b7=new Telephone1("Ashu", 82182);
+        treeMap.replace(13,b7);
         //remove an element
-        map1.remove(15);
-
+        treeMap.remove(15);
         //print elements
         System.out.println("OUTPUT FROM TREEMAP : ");
-        for(Map.Entry<Integer, Bo> entry:map1.entrySet()){
+        for(Map.Entry<Integer, Telephone1> entry:treeMap.entrySet()){
             int key=entry.getKey();
-            Bo b=entry.getValue();
+            Telephone1 b=entry.getValue();
             System.out.println(key+" Details:");
             System.out.println(b.name+" "+b.PhNo);
         }
@@ -195,16 +179,16 @@ class Telephone{
 
 }
 //for remaining all
-class Bo implements Comparable<Bo>{
+class Telephone1 implements Comparable<Telephone1>{
     String name;
     int PhNo;
-    public Bo(String name,int PhNo){
+    public Telephone1(String name,int PhNo){
         this.name=name;
         this.PhNo=PhNo;
 
     }
     @Override
-    public int compareTo(Bo o) {
+    public int compareTo(Telephone1 o) {
         return 0;
     }
 }

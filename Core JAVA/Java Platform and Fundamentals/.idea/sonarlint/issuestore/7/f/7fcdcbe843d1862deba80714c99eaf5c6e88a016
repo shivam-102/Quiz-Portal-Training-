@@ -1,0 +1,29 @@
+
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºîÁıÿÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(¨®óûÿÿÿÿ
+E
+java:S1197	"*Move the array designators [] to the type.(úö‰£ùÿÿÿÿ
+N	java:S106
+"9Replace this use of System.out or System.err by a logger.(ÔŞÚş
+N	java:S106"9Replace this use of System.out or System.err by a logger.(¢Ã‚
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ²î
+>
+java:S1659"#Declare "small" on a separate line.(™¤‹äşÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(¨®óûÿÿÿÿ
+@
+java:S1197"*Move the array designators [] to the type.(ÏÛ¹‰
+N	java:S106"9Replace this use of System.out or System.err by a logger.(ÔŞÚş
+N	java:S106'"9Replace this use of System.out or System.err by a logger.(äØó¦
+N	java:S106("9Replace this use of System.out or System.err by a logger.(¨ £ô
+c	java:S100,"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡áÃ
+N	java:S106."9Replace this use of System.out or System.err by a logger.(õ´ º
+E
+java:S11971"*Move the array designators [] to the type.(Ó˜ûÉşÿÿÿÿ
+N	java:S1062"9Replace this use of System.out or System.err by a logger.(¤ÆÈ¦
+S	java:S106<"9Replace this use of System.out or System.err by a logger.(½úíõøÿÿÿÿ
+W
+java:S1126H"AReplace this if-then-else statement by a single return statement.(ÇÃĞù
+S	java:S106T"9Replace this use of System.out or System.err by a logger.(Õ…‘ñùÿÿÿÿ
+N	java:S106Y"9Replace this use of System.out or System.err by a logger.(ü‡–
+N	java:S106["9Replace this use of System.out or System.err by a logger.(£‡‹Õ
+b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ŠéØ

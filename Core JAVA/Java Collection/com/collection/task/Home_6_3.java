@@ -1,7 +1,5 @@
 package com.collection.task;
-
 import java.util.*;
-
 final class HeavenlyBody {
 
 
@@ -18,15 +16,12 @@ final class HeavenlyBody {
     public String getName() {
         return name;
     }
-
     public double getOrbitalPeriod() {
         return orbitalPeriod;
     }
-
     public boolean addMoon(HeavenlyBody moon) {
         return this.satellites.add(moon);
     }
-
     public Set<HeavenlyBody> getSatellites() {
         return new HashSet<>(this.satellites);
     }
@@ -35,9 +30,6 @@ final class HeavenlyBody {
         System.out.println("hashcode called");
         return Objects.hash(name, orbitalPeriod, satellites);
     }
-
-
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
