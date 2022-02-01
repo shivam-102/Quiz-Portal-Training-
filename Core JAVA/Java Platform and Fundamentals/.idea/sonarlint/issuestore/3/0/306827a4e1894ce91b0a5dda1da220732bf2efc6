@@ -1,16 +1,0 @@
-
-N	java:S106"9Replace this use of System.out or System.err by a logger.(ãç™
-N	java:S106"9Replace this use of System.out or System.err by a logger.(–œÁš
-N	java:S106"9Replace this use of System.out or System.err by a logger.(é¢˜Š
-N	java:S106"9Replace this use of System.out or System.err by a logger.(ØÓ³ğ
-S	java:S106"9Replace this use of System.out or System.err by a logger.(†¢¹½øÿÿÿÿ
-N	java:S106"9Replace this use of System.out or System.err by a logger.(åÂÑí
-N	java:S106"9Replace this use of System.out or System.err by a logger.(¬â—ö
-S	java:S106""9Replace this use of System.out or System.err by a logger.(¢Ë¬ªıÿÿÿÿ
-S	java:S106%"9Replace this use of System.out or System.err by a logger.(«ã×¢şÿÿÿÿ
-S	java:S106("9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ
-S	java:S106+"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ
-_
-java:S1192"IDefine a constant instead of duplicating this literal "Result :" 6 times.(é¢˜Š
-P
-java:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ

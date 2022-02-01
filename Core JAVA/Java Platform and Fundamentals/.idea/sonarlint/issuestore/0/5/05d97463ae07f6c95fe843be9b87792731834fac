@@ -1,17 +1,0 @@
-
-C
-java:S1659"&Declare "ambervar" on a separate line.(Ë…ú8®§”åê/
-E
-java:S1659")Declare "amberdouble" on a separate line.(«…´T8¹Ì¦åê/
-C
-java:S3010"&Remove this assignment of "danielvar".(¨“î8»í¥åê/
-A
-java:S3010	"%Remove this assignment of "ambervar".(» ‹c8»í¥åê/
-F
-java:S3010")Remove this assignment of "danieldouble".(Ó±ÿ™8çœ¥åê/
-J
-java:S3010"(Remove this assignment of "amberdouble".(šÌ˜ñşÿÿÿÿ8ˆŠ¦åê/
-E
-java:S1197"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ
-S	java:S106"9Replace this use of System.out or System.err by a logger.(ÄÛæÎùÿÿÿÿ
-U	java:S106"9Replace this use of System.out or System.err by a logger.(Šêæç8½£åê/
