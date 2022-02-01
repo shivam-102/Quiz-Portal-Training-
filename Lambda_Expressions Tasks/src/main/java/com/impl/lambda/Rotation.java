@@ -9,8 +9,8 @@ public class Rotation {
     static boolean isRotation(String string3,String string4){
         if (string3.length() != string4.length())
             return false;
-        String stringx=string3+string3;
-        if(stringx.indexOf(string4)!=-1){
+        String stringNew=string3+string3;
+        if(stringNew.indexOf(string4)!=-1){
             return true;
         }
         else{
@@ -27,8 +27,8 @@ public class Rotation {
         Operation operation=(string3,string4)-> {
             if (string3.length() != string4.length())
                 return false;
-            String stringx=string3+string3;
-            if(stringx.indexOf(string4)!=-1){
+            String stringNew=string3+string3;
+            if(stringNew.indexOf(string4)!=-1){
                 return true;
             }
             else{

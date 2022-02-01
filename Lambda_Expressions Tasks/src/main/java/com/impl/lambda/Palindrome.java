@@ -20,7 +20,7 @@ public class Palindrome {
         String input=scanner.nextLine();
         //using Lambda function and consumer functional interface
 
-        Consumer<String> consumer=(string) ->{
+        Consumer<String> consumer=string ->{
             String reverse="";
             for(int initializingVar=string.length()-1;initializingVar>=0;initializingVar--){
                 reverse=reverse+string.charAt(initializingVar);

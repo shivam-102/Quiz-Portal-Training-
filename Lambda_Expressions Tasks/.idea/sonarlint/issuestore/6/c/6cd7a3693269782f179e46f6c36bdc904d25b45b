@@ -1,7 +1,0 @@
-
-\
-java:S1126"AReplace this if-then-else statement by a single return statement.(Þùù¬ûÿÿÿÿ
-N	java:S106"9Replace this use of System.out or System.err by a logger.(«™ÈÖ
-M	java:S106"9Replace this use of System.out or System.err by a logger.(ŸÃÄ
-N	java:S106*"9Replace this use of System.out or System.err by a logger.(Ø‰´â
-V	java:S125"<This block of commented-out lines of code should be removed.(Üè•™þÿÿÿÿ

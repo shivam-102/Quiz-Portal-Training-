@@ -7,6 +7,6 @@ public class PrintNumbers {
                 System.out.println(pointer1);
             }
         };
-        new Thread(runnable).run();
+        new Thread(runnable).start();
     }
 }

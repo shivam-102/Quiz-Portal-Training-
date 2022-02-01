@@ -13,7 +13,6 @@ public class Task11 {
         Employees.add("Aanchal");
         Employees.add("Durga");
         Employees.add("Modi");
-
         //with lambda expression
         Comparator<String> comparator=(object1,object2)->{
             return object2.compareTo(object1);
@@ -27,6 +26,5 @@ public class Task11 {
         for(String name:Employees){
             System.out.println(name);
         }
-
     }
 }

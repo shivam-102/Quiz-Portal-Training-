@@ -1,13 +1,11 @@
 package com.impl.lambda;
 import java.util.*;
 import java.util.function.Supplier;
-public class Second_big {
-
+public class SecondBig {
     //without interface
-    static int second_largest(ArrayList<Integer> list,int amount){
+    static int secondLargest(ArrayList<Integer> list,int amount){
         Collections.sort(list);
-        int element= list.get(amount-2);;
-        return element;
+        return list.get(amount-2);
     }
     public static void main(String[] args){
         Scanner scanner=new Scanner(System.in);
@@ -26,7 +24,7 @@ public class Second_big {
         System.out.println("Second Largest number "+supplier.get());
 
         //without lambda expressions
-        System.out.println("Second Largest number "+Second_big.second_largest((ArrayList) list,amount));
+        System.out.println("Second Largest number "+SecondBig.secondLargest((ArrayList) list,amount));
         scanner.close();
 
     }

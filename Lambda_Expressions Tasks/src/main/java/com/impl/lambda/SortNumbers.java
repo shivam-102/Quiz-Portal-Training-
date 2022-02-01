@@ -18,15 +18,12 @@ public class SortNumbers {
         Collections.sort(list,(p1,p2)->{
             return p2.compareTo(p1);
         });
-        for(Integer e : list) {
-            System.out.println(e);
+        for(Integer number : list) {
+            System.out.println(number);
         }
         //without Lambda Expression
         Collections.sort(list,Collections.reverseOrder());
         System.out.println("In descending order:"+list);
-
-
         scanner.close();
     }
-
 }
