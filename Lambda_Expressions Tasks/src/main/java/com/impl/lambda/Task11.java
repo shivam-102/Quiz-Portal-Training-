@@ -6,8 +6,8 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Task11 {
-    public static <Sting> void main(String[] args){
-        List<String> Employees = new ArrayList<String>();
+    public static void main(String[] args){
+        List<String> Employees = new ArrayList<>();
         Employees.add("Shivam");
         Employees.add("Azhar");
         Employees.add("Aanchal");

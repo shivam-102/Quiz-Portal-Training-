@@ -18,8 +18,8 @@ public class SortEmployees {
         Collections.sort(list,(p1,p2)->{
             return p1.compareTo(p2);
         });
-        for(String e : list) {
-            System.out.println(e);
+        for(String output : list) {
+            System.out.println(output);
         }
 
         //Without Lambda Expression

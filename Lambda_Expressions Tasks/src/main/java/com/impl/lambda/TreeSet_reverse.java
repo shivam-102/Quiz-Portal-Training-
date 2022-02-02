@@ -24,7 +24,7 @@ public class TreeSet_reverse {
             System.out.println(number);
         }
         System.out.println("Without Using lambda Expression:");
-        TreeSet<Integer> treeSet1=new TreeSet<Integer>(new MyComaparator());
+        TreeSet<Integer> treeSet1=new TreeSet<>(new MyComaparator());
         for(Integer number:treeSet){
             System.out.println(number);
         }

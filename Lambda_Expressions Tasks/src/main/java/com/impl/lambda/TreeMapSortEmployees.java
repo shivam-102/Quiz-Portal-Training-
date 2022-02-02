@@ -3,7 +3,7 @@ import java.util.Map;
 import java.util.TreeMap;
 public class TreeMapSortEmployees {
     public static void main(String[] args){
-        TreeMap<String,Integer> treeMap=new TreeMap<>();
+        Map<String,Integer> treeMap=new TreeMap<>();
         treeMap.put("Shivam",670);
         treeMap.put("Durga",201);
         treeMap.put("Deepak",50);

@@ -3,7 +3,7 @@ import java.util.Map;
 import java.util.TreeMap;
 public class TreeMapDescendingSort {
     public static void main(String[] args) {
-        TreeMap<String, Integer> treeMap = new TreeMap<>();
+        Map<String, Integer> treeMap = new TreeMap<>();
         treeMap.put("Shivam", 102);
         treeMap.put("Azhar", 203);
         treeMap.put("Akhil", 509);

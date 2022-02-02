@@ -1,5 +1,6 @@
 package com.impl.lambda;
-import java.util.*;
+import java.util.TreeSet;
+import java.util.Iterator;
 public class TreeSet_names {
     public static void main(String[] args){
         System.out.println("Using lambda Expression:");
