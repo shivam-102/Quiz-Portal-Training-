@@ -1,7 +1,7 @@
 package com.collection.task;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.Arrays;
 class Printer {
     public static void printArray(Object[] obj){
         System.out.println(Arrays.toString(obj));
@@ -9,7 +9,7 @@ class Printer {
 }
 public class Hometask6_6 {
     public static void main(String args[]){
-        Printer arr = new Printer ();
+        Printer array = new Printer ();
         // create arrays of Integer, Double and Character
         Integer[] integerArray = {1, 2, 3, 4, 5, 6};
         Double[] doubleArray = {1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7};
