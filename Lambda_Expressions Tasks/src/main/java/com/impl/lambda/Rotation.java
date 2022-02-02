@@ -6,7 +6,9 @@ interface Operation{
 public class Rotation {
     static boolean isRotation(String stringCheck,String stringCheckForRotation){
         if (stringCheck.length() != stringCheckForRotation.length())
+        {
             return false;
+        }
         String stringNew=stringCheck+stringCheck;
         if(stringNew.indexOf(stringCheckForRotation)!=-1){
             return true;
@@ -23,8 +25,9 @@ public class Rotation {
         String stringToMatch=scanner.nextLine();
         //With Lambda Expression
         Operation operation=(stringCheck,stringCheckForRotation)-> {
-            if (stringCheck.length() != stringCheckForRotation.length())
+            if (stringCheck.length() != stringCheckForRotation.length()){
                 return false;
+            }
             String stringNew=stringCheck+stringCheck;
             if(stringNew.indexOf(stringCheckForRotation)!=-1){
                 return true;
