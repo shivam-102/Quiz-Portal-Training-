@@ -38,7 +38,7 @@ public class Task {
             productList.add(new Product(name,price,category,grade));
         }
         //Question-1
-        List<Float> greaterThanThousand= (List<Float>) productList.stream()
+        List<Float> greaterThanThousand=  productList.stream()
                         .filter(product -> product.price>1000)
                                 .map(product -> product.price)
                                         .collect(Collectors.toList());
@@ -47,13 +47,13 @@ public class Task {
         String electronic= "electronic";
 
         //Question-2
-        List<String> names= (List<String>) productList.stream()
+        List<String> names= productList.stream()
                 .filter(product -> product.category.equals(electronic))
                         .map(product -> product.name)
                                 .collect(Collectors.toList());
         System.out.println(names);
         /* Question-3 */
-        List<String> match= (List<String>) productList.stream()
+        List<String> match= productList.stream()
                 .filter(product -> product.category.equals(electronic))
                 .filter(product -> product.price>1000)
                 .map(product -> product.name.toUpperCase(Locale.ROOT))
