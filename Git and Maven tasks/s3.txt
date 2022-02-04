@@ -1,0 +1,13 @@
+Dev branch's file
+
+//changes made for 6 task
+
+//for cherry - pick
+
+<<<<<<< HEAD
+//let's do cherry pick
+
+//cherry - pick
+=======
+//let's do cherry pick
+>>>>>>> e6bd116 (changes made to file)
