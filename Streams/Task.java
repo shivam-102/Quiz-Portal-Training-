@@ -98,11 +98,11 @@ public class Task {
         System.out.println(traders);
 
         //Question 4
-        String trad=transactionList.stream()
+        String tradersNameSort=transactionList.stream()
                 .map(transaction -> transaction.getTrader().getName())
                 .sorted()
                 .reduce("",(n1,n2)->n1+n2);
-        System.out.println(trad);
+        System.out.println(tradersNameSort);
         //Question 5
         boolean milanTraders=transactionList.stream()
                 .anyMatch(transaction -> transaction.getTrader().getCity().equals("Milan"));
