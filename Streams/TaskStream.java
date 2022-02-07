@@ -58,7 +58,7 @@ class Transaction {
     }
 }
 
-public class Task {
+public class TaskStream {
     public static void main(String[] args){
      Trader shivam=new Trader("Shivam","Cambridge");
      Trader deepak=new Trader("Deepak","Milan");
