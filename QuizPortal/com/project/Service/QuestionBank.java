@@ -15,8 +15,8 @@ public QuestionBank(){
 public ArrayList printQuestions(){
     return (ArrayList) questions;
 }
-boolean addQuestion(String yourQuestion,String yourOptions[],String setDifficulty,String correctAnswer){
-    questions.add(new Questions(yourQuestion,yourOptions=new String[4],setDifficulty,correctAnswer));
+boolean addQuestion(String yourQuestion,String[] yourOptions,String setDifficulty,String correctAnswer){
+    questions.add(new Questions(yourQuestion,yourOptions,setDifficulty,correctAnswer));
     return true;
 }
 boolean deleteQuestion(int indexToDelete){

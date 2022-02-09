@@ -18,14 +18,17 @@ public class QuestionPortal {
 
             }
             else if(operationChoice==2){
+                System.out.println("Press Enter");
+                scanner.nextLine();
                 System.out.println("Please enter the question");
-                String question=scanner.next();
+                String question=scanner.nextLine();
                 System.out.println("Enter the options you want to keep");
-                String options[]=new String[4];
+                String[] options =new String[4];
                 for(int input=0;input< options.length;input++){
                     System.out.println("Enter option"+(input+1));
-                    options[input]=scanner.next();
+                    options[input]=scanner.nextLine();
                 }
+                scanner.nextLine();
                 System.out.println("Enter the difficulty level");
                 String difficulty=scanner.nextLine();
                 System.out.println("Enter the correct answer");

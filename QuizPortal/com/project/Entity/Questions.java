@@ -16,7 +16,6 @@ public Questions(String question, String options[], String difficulty, String an
         return  "Question=" + question +
                 ", options=" + Arrays.toString(options) +
                 ", difficulty=" + difficulty +
-                ", questionType=" +
                 ", answer=" + answer  ;
     }
 }

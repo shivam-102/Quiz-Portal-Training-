@@ -6,18 +6,16 @@ import java.util.Scanner;
 public class QuizService {
    static QuizLibrary quizLibrary=new QuizLibrary();
     private static Scanner scanner;
-
-    public static String createNewQuiz(int[] toAdd){
+    public static int createNewQuiz(int[] toAdd){
         int uniqueKey=quizLibrary.createQuiz(toAdd);
-        return "Quiz created!";
+        return uniqueKey;
     }
     public static boolean checkWhetherExist(int code){
         if(quizLibrary.checkIfThere(code)){
             return true;
         }
-        else{
-            return false;
-        }
+        return false;
+
     }
     public static void modify(int code){
         int choice=0;
@@ -35,6 +33,7 @@ public class QuizService {
                 System.out.println("Question to delete in the quiz");
                 int numberToDelete=scanner.nextInt();
                 System.out.println(quizLibrary.deleteQuestion(code,numberToDelete));
+                quizLibrary.view(code);
             }
             else {
                 System.out.println("Enter a valid option");
@@ -42,8 +41,10 @@ public class QuizService {
         }while(choice!=0);
     }
     void print(int code){
-        ArrayList listToPrint=quizLibrary.view();
-
-
+        ArrayList listToPrint=quizLibrary.view(code);
+        for(int pointer=0;pointer<listToPrint.size();pointer++)
+        {
+            System.out.println( (pointer+1)+"."+listToPrint.get(pointer).toString());
+        }
     }
 }

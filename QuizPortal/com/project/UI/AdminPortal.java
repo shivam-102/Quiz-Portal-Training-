@@ -8,7 +8,7 @@ public class AdminPortal{
         System.out.println("--------------------------------");
         System.out.println("Welcome!!!!!");
         System.out.println("---------------------------------");
-        System.out.println("Press 1 go to Question Bank\n Press2 to go to your Quiz Bank\nPress 3 to logout ");
+        System.out.println("Press 1 go to Question Bank\n Press2 to go to your Quiz Bank\nPress 0 to logout ");
         int adminChoice;
         do{
            adminChoice=scanner.nextInt();
@@ -17,7 +17,6 @@ public class AdminPortal{
            }
            else if(adminChoice==2){
                QuizPortal.operations();
-
            }
            else
            {

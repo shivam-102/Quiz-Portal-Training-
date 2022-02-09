@@ -21,13 +21,13 @@ public class QuizPortal {
                 System.out.println("How many questions you want to add from the above displayed?");
                 int numberOfQuestions=scanner.nextInt();
                 System.out.println("Provide the question numbers you want to add into the quiz:");
-                int toAdd[] = new int[numberOfQuestions];
+                int[] toAdd = new int[numberOfQuestions];
                 for (int pointer = 0; pointer < numberOfQuestions; pointer++) {
                     toAdd[pointer] = scanner.nextInt()-1;
                 }
                 System.out.println(QuizService.createNewQuiz(toAdd));
             }
-            else if(quizChoice==2){
+            else if(quizOptionChoice==2){
                 System.out.println("Enter the code of the quiz to modify...");
                 int code= scanner.nextInt();
                 if(QuizService.checkWhetherExist(code)){
@@ -37,7 +37,6 @@ public class QuizPortal {
                 else{
                     System.out.println("Code does not exist");
                 }
-
             }
 
         }while(quizChoice!=0);

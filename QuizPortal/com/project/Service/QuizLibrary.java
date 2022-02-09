@@ -18,10 +18,10 @@ public class QuizLibrary {
         for (int pointer = 0; pointer < arr.length; pointer++) {
             selectedQuestions.add(questionsList.get(arr[pointer]));
         }
-        int uniqueKey = (int) (Math.random() * (min - max + 1) + min);
+        int uniqueKey = (int) (Math.random() );
         do {
             if (quiz.containsKey(uniqueKey)) {
-                uniqueKey = (int) (Math.random() * (min - max + 1) + min);
+                uniqueKey = (int) (Math.random() );
             } else {
                 break;
             }
@@ -46,7 +46,7 @@ public class QuizLibrary {
         return "Deleted";
     }
 
-    ArrayList view(){
-        return (ArrayList) questionBank.questions;
+    ArrayList view(int code){
+        return (ArrayList) quiz.get(code);
     }
 }

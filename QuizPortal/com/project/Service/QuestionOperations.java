@@ -8,7 +8,7 @@ public class QuestionOperations {
             System.out.println( (pointer+1)+"."+printList.get(pointer).toString());
         }
     }
-    public static String addQuestion(String question,String options[],String difficulty,String questionAnswer){
+    public static String addQuestion(String question,String[] options,String difficulty,String questionAnswer){
         if(questionBank.addQuestion(question,options,difficulty,questionAnswer)){
             return "Added Successfully";
         }
