@@ -1,36 +1,34 @@
-package com.project.Service;
-import java.util.ArrayList;
+package com.project.DAO;
+
+import java.util.Random;
 import java.util.HashMap;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
+import java.util.List;
 
-import static com.project.Service.QuestionOperations.questionBank;
-
-public class QuizLibrary {
-    Map<Integer, ArrayList> quiz = new HashMap<>();
+public class QuizDAO {
+    public Map<Integer, ArrayList> quiz = new HashMap<>();
     List<Object> selectedQuestions = new ArrayList<Object>();
-    QuestionBank questionBankAccess = new QuestionBank();
-
+    QuestionDAO questionDAOAccess = new QuestionDAO();
+    Random random=new Random();
     public int createQuiz(int arr[]) {
-        int min = 90;
-        int max = 1000;
-        ArrayList questionsList = (ArrayList) questionBankAccess.questions;
+        ArrayList questionsList = (ArrayList) questionDAOAccess.questions;
         for (int pointer = 0; pointer < arr.length; pointer++) {
             selectedQuestions.add(questionsList.get(arr[pointer]));
         }
-        int uniqueKey = (int) (Math.random() );
+        int uniqueKey = random.nextInt(1000);
         do {
             if (quiz.containsKey(uniqueKey)) {
-                uniqueKey = (int) (Math.random() );
+                uniqueKey = random.nextInt(1000);
             } else {
                 break;
             }
         } while (true);
-        quiz.put(uniqueKey, questionsList);
+        quiz.put(uniqueKey, (ArrayList) selectedQuestions);
         return uniqueKey;
     }
 
-    boolean checkIfThere(int code) {
+    public boolean checkIfThere(int code) {
         if (quiz.containsKey(code)) {
             return true;
         }
@@ -39,14 +37,14 @@ public class QuizLibrary {
 
 
     public void addQuestion(int questionNumber,int code){
-        quiz.get(code).add(questionBankAccess.questions.get(questionNumber));
+        quiz.get(code).add(questionDAOAccess.questions.get(questionNumber));
     }
     public String deleteQuestion(int deleteQuestionNumber,int code){
         quiz.get(code).remove(deleteQuestionNumber);
         return "Deleted";
     }
 
-    ArrayList view(int code){
+    public ArrayList view(int code){
         return (ArrayList) quiz.get(code);
     }
 }

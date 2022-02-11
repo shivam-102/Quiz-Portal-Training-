@@ -1,5 +1,7 @@
 package com.project.Entity;
+import lombok.Setter;
 import java.util.Arrays;
+@Setter
 public class Questions {
 private String question;
 private String options[];

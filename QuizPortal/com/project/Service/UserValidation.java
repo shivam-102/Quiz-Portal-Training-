@@ -1,12 +1,14 @@
 package com.project.Service;
-import com.project.DAO.CredentialsValidation;
+import com.project.DAO.CredentialsValidationDAO;
 import com.project.UI.AdminPortal;
 
 
 public class UserValidation {
+    AdminPortal adminPortal=new AdminPortal();
+    CredentialsValidationDAO credentialsValidationDAO=new CredentialsValidationDAO();
     public void verify(String username, String password){
-        if(CredentialsValidation.checkCredentials(username, password)){
-            AdminPortal.start();
+        if(credentialsValidationDAO.checkCredentials(username, password)){
+           adminPortal.start();
 
         }
         else{
@@ -15,11 +17,11 @@ public class UserValidation {
 
     }
     public boolean checkIfUserNameExists(String newUsername,String newPassword){
-        if(CredentialsValidation.checkForUserName(newUsername)){
+        if(credentialsValidationDAO.checkForUserName(newUsername)){
             return false;
         }
         else{
-            CredentialsValidation.registerNewUser(newUsername,newPassword);
+            credentialsValidationDAO.registerNewUser(newUsername,newPassword);
             return true;
         }
     }

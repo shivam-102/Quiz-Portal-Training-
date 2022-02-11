@@ -1,16 +1,13 @@
 package com.project.UI;
 
-import com.project.Service.QuestionBank;
-import com.project.Service.QuizLibrary;
-
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Logger;
 public class MainApp {
     static Logger log = Logger.getLogger(MainApp.class.getName());
+    Scanner scanner=new Scanner(System.in);
     public static void main(String[] args) {
-        Welcome w=new Welcome();
-        w.QuizPortalStart();
+        new Welcome();
+
     }
         /*
         System.out.println("Welcome to Quiz Portal");

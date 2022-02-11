@@ -1,27 +1,32 @@
 package com.project.UI;
-
 import java.util.Scanner;
 
 public class AdminPortal{
     static Scanner scanner=new Scanner(System.in);
-    public static void start(){
-        System.out.println("--------------------------------");
-        System.out.println("Welcome!!!!!");
-        System.out.println("---------------------------------");
-        System.out.println("Press 1 go to Question Bank\n Press2 to go to your Quiz Bank\nPress 0 to logout ");
+    QuestionPortal questionPortal=new QuestionPortal();
+    QuizPortal quizPortal=new QuizPortal();
+    public void start(){
+        optionDisplay();
         int adminChoice;
         do{
            adminChoice=scanner.nextInt();
            if(adminChoice==1){
-               QuestionPortal.operations();
+               questionPortal.operations();
            }
            else if(adminChoice==2){
-               QuizPortal.operations();
+               quizPortal.operations();
            }
            else
            {
                System.out.println("Enter valid operation");
            }
         }while(adminChoice!=0);
+    }
+
+    public void optionDisplay(){
+        System.out.println("--------------------------------");
+        System.out.println("Welcome!!!!!");
+        System.out.println("---------------------------------");
+        System.out.println("Press 1 go to Question Bank\n Press2 to go to your Quiz Bank\nPress 0 to logout ");
     }
 }
