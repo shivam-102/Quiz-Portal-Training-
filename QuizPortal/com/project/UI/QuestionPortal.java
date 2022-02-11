@@ -1,32 +1,32 @@
 package com.project.UI;
-import com.project.Service.QuestionOperations;
+import com.project.Exceptions.InvalidException;
+import com.project.Service.QuestionService;
 import static com.project.UI.AdminPortal.scanner;
 public class QuestionPortal {
-    QuestionOperations questionOperations=new QuestionOperations();
+    QuestionService questionOperations=new QuestionService();
     void operations(){
         int operationChoice = 0;
         do{
-            operationsView();
-            operationChoice=scanner.nextInt();
-            if(operationChoice==1)
-            {
-                questionOperations.view();
-            }
-            else if(operationChoice==2){
-                viewAddOperation();
-            }
+            try {
+                operationsView();
+                operationChoice = scanner.nextInt();
+                if (operationChoice == 1) {
+                    questionOperations.view();
+                } else if (operationChoice == 2) {
+                    viewAddOperation();
+                } else if (operationChoice == 3) {
+                    System.out.println("Enter the question number you want to delete from the question database");
+                    int toBeDeletedQuestion = scanner.nextInt();
+                    questionOperations.deleteQuestion(toBeDeletedQuestion - 1);
 
-            else if(operationChoice==3){
-                System.out.println("Enter the question number you want to delete from the question database");
-                int toBeDeletedQuestion=scanner.nextInt();
-                questionOperations.deleteQuestion(toBeDeletedQuestion-1);
-
-            }
-            else if(operationChoice==4){
-                viewModifyOperation();
-            }
-            else {
-                System.out.println("Please enter a valid option");
+                } else if (operationChoice == 4) {
+                    viewModifyOperation();
+                } else {
+                    throw new InvalidException("Please enter a valid option");
+                }
+            }catch(InvalidException message){
+                System.out.println("Invalid option selected");
+                System.out.println(message.getMessage());
             }
         }while(operationChoice!=0);
     }

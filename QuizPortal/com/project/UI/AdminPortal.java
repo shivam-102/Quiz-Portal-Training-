@@ -1,4 +1,6 @@
 package com.project.UI;
+import com.project.Exceptions.InvalidException;
+
 import java.util.Scanner;
 
 public class AdminPortal{
@@ -7,19 +9,21 @@ public class AdminPortal{
     QuizPortal quizPortal=new QuizPortal();
     public void start(){
         optionDisplay();
-        int adminChoice;
+        int adminChoice=0;
         do{
-           adminChoice=scanner.nextInt();
-           if(adminChoice==1){
-               questionPortal.operations();
-           }
-           else if(adminChoice==2){
-               quizPortal.operations();
-           }
-           else
-           {
-               System.out.println("Enter valid operation");
-           }
+            try {
+                adminChoice = scanner.nextInt();
+                if (adminChoice == 1) {
+                    questionPortal.operations();
+                } else if (adminChoice == 2) {
+                    quizPortal.operations();
+                } else {
+                    throw new InvalidException("Please Enter a valid option");
+                }
+            }catch(InvalidException message){
+                System.out.println("Invalid option selected");
+                System.out.println(message.getMessage());
+            }
         }while(adminChoice!=0);
     }
 

@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;
-
 public class QuizDAO {
     public Map<Integer, ArrayList> quiz = new HashMap<>();
     List<Object> selectedQuestions = new ArrayList<Object>();

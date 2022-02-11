@@ -1,9 +1,10 @@
 package com.project.UI;
-import com.project.Service.QuestionOperations;
+import com.project.Exceptions.InvalidException;
+import com.project.Service.QuestionService;
 import com.project.Service.QuizService;
 import java.util.Scanner;
 public class QuizPortal {
-    QuestionOperations questionOperations=new QuestionOperations();
+    QuestionService questionOperations=new QuestionService();
     public void operations() {
         viewOperations();
         int quizOptionChoice = 0;
@@ -11,25 +12,31 @@ public class QuizPortal {
         QuizService quizService=new QuizService();
 
         do {
-            quizOptionChoice = scanner.nextInt();
-            if (quizOptionChoice == 1) {
-                questionOperations.view();
-                System.out.println("How many questions you want to add from the above displayed?");
-                int numberOfQuestions = scanner.nextInt();
-                System.out.println("Provide the question numbers you want to add into the quiz:");
-                int[] toAdd = new int[numberOfQuestions];
-                for (int pointer = 0; pointer < numberOfQuestions; pointer++) {
-                    toAdd[pointer] = scanner.nextInt() - 1;
+            try {
+                quizOptionChoice = scanner.nextInt();
+                if (quizOptionChoice == 1) {
+                    questionOperations.view();
+                    System.out.println("How many questions you want to add from the above displayed?");
+                    int numberOfQuestions = scanner.nextInt();
+                    System.out.println("Provide the question numbers you want to add into the quiz:");
+                    int[] toAdd = new int[numberOfQuestions];
+                    for (int pointer = 0; pointer < numberOfQuestions; pointer++) {
+                        toAdd[pointer] = scanner.nextInt() - 1;
+                    }
+                    System.out.println(QuizService.createNewQuiz(toAdd));
+                } else if (quizOptionChoice == 2) {
+                    System.out.println("Enter the code of the quiz to modify...");
+                    int code = scanner.nextInt();
+                    quizService.checkWhetherExist(code);
+                } else if (quizOptionChoice == 3) {
+                    System.out.println("Enter the quiz code");
+                    quizService.print(scanner.nextInt());
+                } else {
+                    throw new InvalidException("Please Enter a valid Option");
                 }
-                System.out.println(QuizService.createNewQuiz(toAdd));
-            } else if (quizOptionChoice == 2) {
-                System.out.println("Enter the code of the quiz to modify...");
-                int code = scanner.nextInt();
-                quizService.checkWhetherExist(code);
-            }
-            else if(quizOptionChoice==3){
-                System.out.println("Enter the quiz code");
-                quizService.print(scanner.nextInt());
+            }catch(InvalidException message){
+                System.out.println("Invalid option selected");
+                System.out.println(message.getMessage());
             }
         } while (quizOptionChoice != 0);
     }
