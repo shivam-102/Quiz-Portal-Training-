@@ -3,7 +3,6 @@ package com.project.Service;
 import com.project.DAO.QuizDAO;
 import com.project.Exceptions.InvalidException;
 import com.project.Exceptions.QuestionNotExist;
-import com.project.UI.Welcome;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

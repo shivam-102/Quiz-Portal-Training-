@@ -1,8 +1,6 @@
 package com.project.UI;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Welcome {
     Scanner scanner = new Scanner(System.in);
@@ -28,7 +26,6 @@ public class Welcome {
 
         } while (true);
     }
-
     void firstPage(){
         logger.info("---------------------------");
         logger.info("Welcome to the Quiz Portal");
