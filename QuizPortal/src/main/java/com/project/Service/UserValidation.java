@@ -3,14 +3,7 @@ import com.project.DAO.CredentialsValidationDAO;
 public class UserValidation {
     CredentialsValidationDAO credentialsValidationDAO=new CredentialsValidationDAO();
     public boolean verify(String username, String password){
-        if(credentialsValidationDAO.checkCredentials(username, password)){
-           return true;
-
-        }
-        else{
-            return false;
-            }
-
+        return credentialsValidationDAO.checkCredentials(username, password);
     }
     public boolean checkIfUserNameExists(String newUsername,String newPassword){
         if(credentialsValidationDAO.checkForUserName(newUsername)){

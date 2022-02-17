@@ -6,9 +6,18 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;
 public class QuizDAO {
-    public Map<Integer, ArrayList> quiz = new HashMap<>();
+    public static Map<Integer, ArrayList> quiz = new HashMap<>();
+    private static QuizDAO quizDAO_instance=null;
+    public static QuizDAO getInstance(){
+        if(quizDAO_instance==null){
+            return new QuizDAO();
+        }
+        return quizDAO_instance;
+    }
+
+
     List<Object> selectedQuestions = new ArrayList<Object>();
-    QuestionDAO questionDAOAccess = new QuestionDAO();
+    QuestionDAO questionDAOAccess = QuestionDAO.getInstance();
     Random random=new Random();
     public int createQuiz(int arr[]) {
         ArrayList questionsList = (ArrayList) questionDAOAccess.questions;

@@ -1,23 +1,23 @@
 package com.project.UI;
+import com.project.UI.QuestionUI.QuestionOperationsUI;
+import com.project.UI.QuizUI.QuizOperationsUI;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
 public class AdminPortal {
     private Logger logger = LogManager.getLogger(AdminPortal.class);
     static Scanner scanner = new Scanner(System.in);
-    QuestionPortal questionPortal = new QuestionPortal();
-    QuizPortal quizPortal = new QuizPortal();
-
+    QuestionOperationsUI questionOperationsUI=new QuestionOperationsUI();
+    QuizOperationsUI quizOperationsUI=new QuizOperationsUI();
     public void start() {
-
         while (true) {
             optionDisplay();
             try {
                 int adminChoice = Integer.parseInt(scanner.nextLine());
                 if (adminChoice == 1) {
-                    questionPortal.operations();
+                    questionOperationsUI.operations();
                 } else if (adminChoice == 2) {
-                    quizPortal.operations();
+                    quizOperationsUI.operation();
                 } else if (adminChoice == 0) {
                     break;
                 } else {

@@ -11,7 +11,6 @@ public class AdminUI {
         AdminPortal adminPortal=new AdminPortal();
         User user=new User();
         UserValidation userValidation=new UserValidation();
-
         while(true) {
             logger.info("Press 1 to login Press 2 to sign-up Press 3 to exit");
             logger.info("Please enter your choice");
