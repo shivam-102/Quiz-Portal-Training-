@@ -1,3 +1,4 @@
+package com.Task.JUnit;
 public class TDDTask {
     public static String removal(String string){
         if(string.length()<=2){
