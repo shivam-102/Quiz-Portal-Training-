@@ -1,6 +1,4 @@
 
 P
 java:S1118":Add a private constructor to hide the implicit public one.(ÅÔ€§
-œ
-java:S1598"€This file "TDDTask.java" should be located in "com\Task\JUnit" directory, not in "C:\Tasks\rd-training\JUnitTask\src\main\java".(Ð—›Ãþÿÿÿÿ
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ð—›Ãþÿÿÿÿ
