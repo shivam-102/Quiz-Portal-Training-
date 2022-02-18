@@ -9,6 +9,5 @@ class TDDTaskTest {
         assertEquals("CD",TDDTask.removal("AACD"));
         assertEquals("BCD",TDDTask.removal("BACD"));
         assertEquals("BBAA",TDDTask.removal("BBAA"));
-        assertEquals("AA",TDDTask.removal("AA"));
     }
 }
