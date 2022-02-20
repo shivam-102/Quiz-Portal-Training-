@@ -3,7 +3,6 @@ import com.project.Entity.Questions;
 import java.util.ArrayList;
 import java.util.List;
 public class QuestionDAO {
-
     private static QuestionDAO questionDAO_instance=null;
     public static QuestionDAO getInstance(){
         if(questionDAO_instance==null){
@@ -11,7 +10,7 @@ public class QuestionDAO {
         }
         return questionDAO_instance;
     }
-    public static List<Questions> questions = new ArrayList<>();
+    protected static List<Questions> questions = new ArrayList<>();
     static {
             questions.add(new Questions("Number of primitive data types in Java are?", new String[]{"6", "7", "8", "9"}, "Easy", "8"));
             questions.add(new Questions("What is the size of float and double in java?", new String[]{"32 and 64", "32 and 32", "64 and 64", "64 and 32"}, "easy", "32 and 64"));
@@ -21,7 +20,7 @@ public class QuestionDAO {
     }
     private QuestionDAO(){}
 
-    public ArrayList printQuestions() {
+    public ArrayList<Questions> printQuestions() {
         return (ArrayList) questions;
     }
 

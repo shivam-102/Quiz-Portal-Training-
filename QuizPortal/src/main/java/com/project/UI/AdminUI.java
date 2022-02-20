@@ -5,6 +5,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
 public class AdminUI {
+    private AdminUI(){
+
+    }
     private static Logger logger= LogManager.getLogger(AdminUI.class);
     static void welcome(Scanner scanner){
         logger.info("Welcome to Admin Portal");

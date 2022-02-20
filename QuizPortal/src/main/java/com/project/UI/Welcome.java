@@ -1,4 +1,5 @@
 package com.project.UI;
+import com.project.Exceptions.InvalidChoiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
@@ -19,9 +20,12 @@ public class Welcome {
                 } else if (choice == 0) {
                     break;
                 } else {
+                    throw new InvalidChoiceException("Please enter a valid choice");
                 }
             }catch(NumberFormatException message){
-                logger.info(message);
+                logger.warn(message);
+            }catch (InvalidChoiceException message){
+                logger.warn(message);
             }
 
         } while (true);

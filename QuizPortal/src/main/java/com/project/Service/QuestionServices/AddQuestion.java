@@ -1,14 +1,15 @@
 package com.project.Service.QuestionServices;
 import com.project.DAO.QuestionDAO;
 import com.project.Service.Operation;
+import com.project.UI.QuestionUI.AddQuestionUI;
 import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
-
 @Setter
 public class AddQuestion implements Operation {
+    AddQuestionUI addQuestionUI=new AddQuestionUI();
     private static Logger logger= LogManager.getLogger(AddQuestion.class);
     Scanner scanner=new Scanner(System.in);
     private String question;
@@ -19,7 +20,8 @@ public class AddQuestion implements Operation {
     @Override
     public void perform() {
         getParameters();
-        if(questionDAO.addQuestion(question, options, difficulty, questionAnswer)){
+        boolean returnValue=addQuestion(question,options,difficulty,questionAnswer);
+        if(returnValue){
             logger.info("Question has been added");
         }
         else{
@@ -27,20 +29,13 @@ public class AddQuestion implements Operation {
         }
     }
     void getParameters(){
-        logger.info("Please enter the question");
-        setQuestion(scanner.nextLine());
-        scanner.nextLine();
-        logger.info("Enter the options you want to keep");
-        String[] options =new String[4];
-        for(int input=0;input< options.length;input++){
-            logger.info("Enter option"+(input+1));
-            options[input]=scanner.nextLine();
-        }
-        setOptions(options);
-        scanner.nextLine();
-        logger.info("Enter the difficulty level");
-        setDifficulty(scanner.nextLine());
-        logger.info("Enter the correct answer");
-        setQuestionAnswer(scanner.nextLine());
+        setQuestion(addQuestionUI.question());
+        setOptions(addQuestionUI.options());
+        setDifficulty(addQuestionUI.difficulty());
+        setQuestionAnswer(addQuestionUI.answer());
     }
+    public boolean addQuestion(String question,String[] options,String difficulty,String questionAnswer){
+        return questionDAO.addQuestion(question, options, difficulty, questionAnswer);
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.project.Service.QuestionServices;
 import com.project.DAO.QuestionDAO;
+import com.project.Entity.Questions;
 import com.project.Service.Operation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,9 +10,14 @@ public class ViewQuestions implements Operation {
     QuestionDAO questionDAO=QuestionDAO.getInstance();
     @Override
     public void perform() {
-        ArrayList printList = questionDAO.printQuestions();
+       display();
+
+    }
+    boolean display(){
+        ArrayList<Questions> printList = questionDAO.printQuestions();
         for (int pointer = 0; pointer < printList.size(); pointer++) {
             logger.info((pointer + 1) + "." + printList.get(pointer).toString());
         }
+        return true;
     }
 }

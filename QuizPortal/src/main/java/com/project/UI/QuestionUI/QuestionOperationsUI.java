@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
 public class QuestionOperationsUI {
     Scanner scanner=new Scanner(System.in);
-    private static Logger logger= LogManager.getLogger(QuizOperationsUI.class);
+    private static Logger logger= LogManager.getLogger(QuestionOperationsUI.class);
 
     public void operations(){
         while(true){
@@ -21,8 +21,6 @@ public class QuestionOperationsUI {
            operation.perform();
         }
     }
-
-
     void listOfOperations(){
         logger.info("Choose the operations you want to perform");
         logger.info("Press 1 to view the available questions");

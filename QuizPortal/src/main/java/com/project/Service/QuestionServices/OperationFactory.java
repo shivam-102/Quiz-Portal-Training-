@@ -4,7 +4,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class OperationFactory {
-    private Logger logger = LogManager.getLogger(OperationFactory.class);
+    OperationFactory(){
+
+    }
     public static Operation getOperation(int choice) {
             if (choice == 1) {
                 return new ViewQuestions();

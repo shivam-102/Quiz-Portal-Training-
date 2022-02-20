@@ -1,4 +1,5 @@
 package com.project.UI;
+import com.project.Exceptions.InvalidChoiceException;
 import com.project.UI.QuestionUI.QuestionOperationsUI;
 import com.project.UI.QuizUI.QuizOperationsUI;
 import org.apache.logging.log4j.LogManager;
@@ -21,10 +22,12 @@ public class AdminPortal {
                 } else if (adminChoice == 0) {
                     break;
                 } else {
-                    continue;
+                    throw new InvalidChoiceException("Enter a valid choice");
                 }
             } catch (NumberFormatException message) {
-                logger.info(message);
+                logger.warn(message);
+            } catch(InvalidChoiceException message){
+                logger.warn(message);
             }
         }
     }

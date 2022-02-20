@@ -1,6 +1,9 @@
 package com.project.Service.QuizServices;
 import com.project.Service.Operation;
 public class QuizOperationFactory {
+    QuizOperationFactory(){
+
+    }
     public static Operation getQuestionOperation(int choice){
         if(choice==1){
             return new ViewQuestionBank();
