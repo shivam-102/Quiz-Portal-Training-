@@ -12,13 +12,13 @@ public class CreateQuiz implements Operation {
     private Logger logger= LogManager.getLogger(CreateQuiz.class);
     QuizDAO quizDAO=QuizDAO.getInstance();
     Scanner scanner=new Scanner(System.in);
-    private int numberOfQuestions;
+     int numberOfQuestions;
     CreateQuizUI createQuizUI=new CreateQuizUI();
 
 
     @Override
     public void perform() {
-        numberOfQuestions();
+        countOfQuestions();
         logger.info("Provide the question numbers you want to add into the quiz:");
         if(addQuestions()){
             logger.info("Quiz has been created successfully;");
@@ -26,14 +26,15 @@ public class CreateQuiz implements Operation {
         logger.info("Quiz cannot be created");
 
     }
-    void numberOfQuestions(){
+    void countOfQuestions(){
         logger.info("How many questions you want to keep in the quiz?");
         setNumberOfQuestions(createQuizUI.numberOfQuestion());
     }
     boolean addQuestions(){
         logger.info("Provide the question numbers you want to add into the quiz:");
         int[] toAdd=createQuizUI.questionsToBeAdded(numberOfQuestions);
-        logger.info("Unique Key is:"+quizDAO.createQuiz(toAdd));
+        logger.info("Unique Key is:");
+        logger.info(quizDAO.createQuiz(toAdd));
         return true;
     }
 }

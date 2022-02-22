@@ -1,12 +1,14 @@
 package com.project.DAO;
 
+import com.project.Entity.Questions;
+
 import java.util.Random;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;
 public class QuizDAO {
-    public static Map<Integer, ArrayList> quiz = new HashMap<>();
+    public static final Map<Integer, ArrayList<Questions>> quiz = new HashMap<>();
     private static QuizDAO quizDAO_instance=null;
     public static QuizDAO getInstance(){
         if(quizDAO_instance==null){
@@ -14,13 +16,10 @@ public class QuizDAO {
         }
         return quizDAO_instance;
     }
-
-
-    List<Object> selectedQuestions = new ArrayList<Object>();
-    QuestionDAO questionDAOAccess = QuestionDAO.getInstance();
+    List<Object> selectedQuestions = new ArrayList<>();
     Random random=new Random();
-    public int createQuiz(int arr[]) {
-        ArrayList questionsList = (ArrayList) questionDAOAccess.questions;
+    public int createQuiz(int[] arr) {
+        ArrayList<String> questionsList = (ArrayList) QuestionDAO.questions;
         for (int pointer = 0; pointer < arr.length; pointer++) {
             selectedQuestions.add(questionsList.get(arr[pointer]));
         }
@@ -37,15 +36,12 @@ public class QuizDAO {
     }
 
     public boolean checkIfThere(int code) {
-        if (quiz.containsKey(code)) {
-            return true;
-        }
-        return false;
+        return quiz.containsKey(code);
     }
 
 
     public void addQuestion(int questionNumber,int code){
-        quiz.get(code).add(questionDAOAccess.questions.get(questionNumber));
+        quiz.get(code).add(QuestionDAO.questions.get(questionNumber));
     }
     public boolean deleteQuestion(int deleteQuestionNumber,int code){
         if(deleteQuestionNumber>quiz.size()) {
@@ -58,7 +54,7 @@ public class QuizDAO {
 
     }
 
-    public ArrayList view(int code){
-        return (ArrayList) quiz.get(code);
+    public List<Questions> view(int code){
+        return quiz.get(code);
     }
 }

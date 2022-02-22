@@ -3,10 +3,10 @@ import lombok.Setter;
 import java.util.Arrays;
 @Setter
 public class Questions {
-private String question;
-private String options[];
-private String difficulty;
-private String answer;
+ String question;
+String options[];
+String difficulty;
+ String answer;
 public Questions(String question, String options[], String difficulty, String answer){
     this.question=question;
     this.options=options;

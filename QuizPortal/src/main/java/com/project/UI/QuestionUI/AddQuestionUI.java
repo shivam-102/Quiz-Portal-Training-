@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
 
 public class AddQuestionUI {
-    private static Logger logger= LogManager.getLogger(AddQuestionUI.class);
+     static Logger logger= LogManager.getLogger(AddQuestionUI.class);
     Scanner scanner=new Scanner(System.in);
     public String question(){
         logger.info("Please enter the question");
@@ -16,7 +16,8 @@ public class AddQuestionUI {
         logger.info("Enter the options you want to keep");
         String[] options =new String[4];
         for(int input=0;input< options.length;input++){
-            logger.info("Enter option",(input+1));
+            logger.info("Enter option");
+            logger.info(input+1);
             options[input]=scanner.nextLine();
         }
         return options;

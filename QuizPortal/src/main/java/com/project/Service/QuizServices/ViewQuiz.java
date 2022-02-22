@@ -18,14 +18,12 @@ public class ViewQuiz implements Operation {
     @Override
     public void perform() {
         getCode();
-        ArrayList<Questions> listToPrint= quizDAO.quiz.get(code);
         display(code);
     }
     public boolean display(int code){
-        ArrayList<Questions> listToPrint= quizDAO.quiz.get(code);
-        for(int pointer=0;pointer<listToPrint.size();pointer++)
-        {
-            logger.info( (pointer+1)+"."+listToPrint.get(pointer).toString());
+        ArrayList<Questions> listToPrint= QuizDAO.quiz.get(code);
+        for(int pointer=0;pointer<listToPrint.size();pointer++) {
+            logger.info((pointer + 1) + "." + listToPrint.get(pointer).toString());
         }
         return true;
     }

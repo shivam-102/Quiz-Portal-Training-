@@ -8,9 +8,9 @@ import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
 @Setter
 public class ModifyQuestion implements Operation {
-    private static Logger logger= LogManager.getLogger(ModifyQuestion.class);
-    private int questionToBeModified;
-    private int modifyChoice;
+     static Logger logger= LogManager.getLogger(ModifyQuestion.class);
+     int questionToBeModified;
+    int modifyChoice;
     QuestionDAO questionDAO=QuestionDAO.getInstance();
     Scanner scanner=new Scanner(System.in);
     @Override

@@ -8,8 +8,8 @@ import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
 @Setter
 public class QuizModification implements Operation {
-    private int code;
-    private static Logger logger= LogManager.getLogger(QuizModification.class);
+     int code;
+     static Logger logger= LogManager.getLogger(QuizModification.class);
     Scanner scanner=new Scanner(System.in);
     QuizDAO quizDAO=QuizDAO.getInstance();
     @Override

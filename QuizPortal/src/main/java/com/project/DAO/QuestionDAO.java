@@ -10,7 +10,7 @@ public class QuestionDAO {
         }
         return questionDAO_instance;
     }
-    protected static List<Questions> questions = new ArrayList<>();
+    public static List<Questions> questions = new ArrayList<>();
     static {
             questions.add(new Questions("Number of primitive data types in Java are?", new String[]{"6", "7", "8", "9"}, "Easy", "8"));
             questions.add(new Questions("What is the size of float and double in java?", new String[]{"32 and 64", "32 and 32", "64 and 64", "64 and 32"}, "easy", "32 and 64"));
@@ -18,10 +18,10 @@ public class QuestionDAO {
             questions.add(new Questions("Select the valid statement", new String[]{"char[] ch=new char(5)", "char[] ch=new char[5]", "char[] ch=new char()", "char[] ch=new char[]"}, "hard", "char[] ch=new char[5]"));
             questions.add(new Questions("Select the valid statement to declare and initialize an array.", new String[]{"int[] A={}", "int[] A={1,2,3}", "int[] A=(1,2,3)", "int[][] A={1,2,3}"}, "hard", "int[] A={1,2,3}"));
     }
-    private QuestionDAO(){}
+     QuestionDAO(){}
 
     public ArrayList<Questions> printQuestions() {
-        return (ArrayList) questions;
+        return (ArrayList<Questions>) questions;
     }
 
     public boolean addQuestion(String yourQuestion, String[] yourOptions, String setDifficulty, String correctAnswer) {

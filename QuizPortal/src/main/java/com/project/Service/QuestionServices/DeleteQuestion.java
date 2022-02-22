@@ -9,9 +9,9 @@ public class DeleteQuestion implements Operation {
     private static Logger logger= LogManager.getLogger(DeleteQuestion.class);
     QuestionDAO questionDAO=QuestionDAO.getInstance();
     DeleteQuestionUI deleteQuestionUI=new DeleteQuestionUI();
-    private int questionNumber;
     @Override
     public void perform() {
+        int questionNumber;
         questionNumber=deleteQuestionUI.setParameter();
         boolean returnValue=deleteOperation(questionNumber);
         try {
