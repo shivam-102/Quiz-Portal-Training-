@@ -1,0 +1,34 @@
+package com.project.service.quizservices;
+import com.project.dao.QuizDAO;
+import com.project.entity.Questions;
+import com.project.service.Operation;
+import com.project.ui.quizui.ViewQuizUI;
+import lombok.Setter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.util.ArrayList;
+import java.util.Scanner;
+@Setter
+public class ViewQuiz implements Operation {
+    private int code;
+    private Logger logger= LogManager.getLogger(ViewQuiz.class);
+    QuizDAO quizDAO=QuizDAO.getInstance();
+    Scanner scanner=new Scanner(System.in);
+    ViewQuizUI viewQuizUI=new ViewQuizUI();
+    @Override
+    public void perform() {
+        getCode();
+        display(code);
+    }
+    public boolean display(int code){
+        ArrayList<Questions> listToPrint= QuizDAO.quiz.get(code);
+        for(int pointer=0;pointer<listToPrint.size();pointer++) {
+            logger.info((pointer + 1) + "." + listToPrint.get(pointer).toString());
+        }
+        return true;
+    }
+    void getCode(){
+        logger.info("Provide the Quiz code");
+        setCode(viewQuizUI.getQuizCode());
+    }
+}
