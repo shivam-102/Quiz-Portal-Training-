@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class QuestionOperationsUI {
     Scanner scanner=new Scanner(System.in);
     private static Logger logger= LogManager.getLogger(QuestionOperationsUI.class);
-
     public void operations(){
         while(true){
            listOfOperations();

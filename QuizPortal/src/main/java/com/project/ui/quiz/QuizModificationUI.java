@@ -1,27 +1,27 @@
-package com.project.service.quizservices;
-import com.project.dao.QuizDAO;
+package com.project.ui.quiz;
+
 import com.project.exceptions.InvalidChoiceException;
 import com.project.service.Operation;
+import com.project.service.quizservice.QuizModificationService;
+import lombok.Getter;
 import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.util.Scanner;
-@Setter
-public class QuizModification implements Operation {
-    EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("Quiz-Portal");
-    EntityManager entityManager=entityManagerFactory.createEntityManager();
-     int code;
-     static Logger logger= LogManager.getLogger(QuizModification.class);
+@Component
+public class QuizModificationUI implements Operation {
+    @Getter
+    @Setter
+    private int code;
+    static Logger logger= LogManager.getLogger(QuizModificationUI.class);
     Scanner scanner=new Scanner(System.in);
-    QuizDAO quizDAO=QuizDAO.getInstance();
+    QuizModificationService quizModificationService=new QuizModificationService();
     @Override
     public void perform() {
-        getCode();
+        logger.info("Enter the quiz code you want modify");
+        setCode(Integer.parseInt(scanner.nextLine()));
         while(true){
             try {
                 questionOperationList();
@@ -40,11 +40,7 @@ public class QuizModification implements Operation {
                 logger.warn(message.getMessage());
             }
         }
-    }
 
-    void getCode(){
-        logger.info("Enter the quiz code you want modify");
-        setCode(Integer.parseInt(scanner.nextLine()));
     }
     void questionOperationList(){
         logger.info("Do you want to add or delete any question in this quiz?");
@@ -52,19 +48,27 @@ public class QuizModification implements Operation {
         logger.info("Press 2 to delete question to the given quiz");
         logger.info("Press 0 to exit");
     }
-
     void addQuestion(){
         logger.info("Press the question number you want to add");
         int questionNumber = Integer.parseInt(scanner.nextLine());
-        quizDAO.addQuestion(entityManager,code,questionNumber);
+        if(quizModificationService.addQuestion(code,questionNumber)){
+            logger.info("Modification done!");
+        }
+        else{
+            logger.info("Modification not possible!");
+        }
+
     }
 
     void deleteQuestion(){
         logger.info("Enter the question you want to delete");
         int questionNumber=Integer.parseInt(scanner.nextLine());
-        quizDAO.deleteQuestion(entityManager,code,questionNumber);
+        if(quizModificationService.deleteQuestion(code,questionNumber)){
+            logger.info("Modification done!");
+        }
+        else{
+            logger.info("Modification not possible!");
+        }
+        //quizDAO.deleteQuestion(entityManager,code,questionNumber);
     }
-
 }
-
-

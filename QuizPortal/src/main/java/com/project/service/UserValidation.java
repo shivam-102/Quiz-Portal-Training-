@@ -1,5 +1,7 @@
 package com.project.service;
 import com.project.dao.CredentialsValidationDAO;
+
+
 public class UserValidation {
     CredentialsValidationDAO credentialsValidationDAO=new CredentialsValidationDAO();
     public boolean verify(String username, String password){

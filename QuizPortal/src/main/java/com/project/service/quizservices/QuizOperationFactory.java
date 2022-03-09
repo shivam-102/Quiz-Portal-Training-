@@ -1,21 +1,40 @@
 package com.project.service.quizservices;
+import com.project.Configurationn;
+import com.project.service.CustomObjectFactory;
 import com.project.service.Operation;
+import com.project.ui.quiz.CreateQuizUI;
+import com.project.ui.quiz.QuizModificationUI;
+import com.project.ui.quiz.ViewQuestionBankUI;
+import com.project.ui.quiz.ViewQuizUI;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 public class QuizOperationFactory {
     QuizOperationFactory(){
 
     }
     public static Operation getQuestionOperation(int choice){
+        ApplicationContext applicationContext=new AnnotationConfigApplicationContext(Configurationn.class);
+        CustomObjectFactory customObjectFactory=applicationContext.getBean(CustomObjectFactory.class);
         if(choice==1){
-            return new ViewQuestionBank();
+            customObjectFactory.setOperationRequired(applicationContext.getBean(ViewQuestionBankUI.class));
+            Operation requiredOperation=customObjectFactory.getOperationRequired();
+            return requiredOperation;
         }
         else if(choice==2){
-            return new CreateQuiz();
+            customObjectFactory.setOperationRequired(applicationContext.getBean(CreateQuizUI.class));
+            Operation requiredOperation=customObjectFactory.getOperationRequired();
+            return requiredOperation;
         }
         else if(choice==3){
-            return new QuizModification();
+            customObjectFactory.setOperationRequired(applicationContext.getBean(QuizModificationUI.class));
+            Operation requiredOperation=customObjectFactory.getOperationRequired();
+            return requiredOperation;
         }
         else if(choice==4){
-            return new ViewQuiz();
+            customObjectFactory.setOperationRequired(applicationContext.getBean(ViewQuizUI.class));
+            Operation requiredOperation=customObjectFactory.getOperationRequired();
+            return requiredOperation;
         }
         else{
             return null;

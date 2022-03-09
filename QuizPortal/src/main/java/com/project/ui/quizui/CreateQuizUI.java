@@ -1,5 +1,7 @@
 package com.project.ui.quizui;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class CreateQuizUI {
@@ -7,11 +9,11 @@ public class CreateQuizUI {
     public int numberOfQuestion(){
         return (Integer.parseInt(scanner.nextLine()));
     }
-    public int[] questionsToBeAdded(int numberOfQuestions){
-        int[] toAdd = new int[numberOfQuestions];
+    public List<Integer> questionsToBeAdded(int numberOfQuestions){
+        List<Integer> toAddIndex=new ArrayList<>();
         for (int pointer = 0; pointer < numberOfQuestions; pointer++) {
-            toAdd[pointer] = Integer.parseInt(scanner.nextLine()) - 1;
+            toAddIndex.add(Integer.parseInt(scanner.next()));
         }
-        return toAdd;
+        return toAddIndex;
     }
 }

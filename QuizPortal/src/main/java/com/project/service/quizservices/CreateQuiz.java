@@ -5,8 +5,13 @@ import com.project.ui.quizui.CreateQuizUI;
 import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import java.util.Scanner;
+import org.springframework.stereotype.Component;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import java.util.List;
+import java.util.Scanner;
 @Setter
 public class CreateQuiz implements Operation {
     private Logger logger= LogManager.getLogger(CreateQuiz.class);
@@ -14,8 +19,8 @@ public class CreateQuiz implements Operation {
     Scanner scanner=new Scanner(System.in);
      int numberOfQuestions;
     CreateQuizUI createQuizUI=new CreateQuizUI();
-
-
+    EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("Quiz-Portal");
+    EntityManager entityManager=entityManagerFactory.createEntityManager();
     @Override
     public void perform() {
         countOfQuestions();
@@ -32,9 +37,8 @@ public class CreateQuiz implements Operation {
     }
     boolean addQuestions(){
         logger.info("Provide the question numbers you want to add into the quiz:");
-        int[] toAdd=createQuizUI.questionsToBeAdded(numberOfQuestions);
-        logger.info("Unique Key is:");
-        logger.info(quizDAO.createQuiz(toAdd));
+        List<Integer> toAdd=createQuizUI.questionsToBeAdded(numberOfQuestions);
+        //quizDAO.createQuiz(entityManager,toAdd);
         return true;
     }
 }
