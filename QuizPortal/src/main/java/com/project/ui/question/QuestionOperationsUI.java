@@ -1,6 +1,6 @@
-package com.project.ui.questionui;
+package com.project.ui.question;
 import com.project.service.Operation;
-import com.project.service.questionservices.OperationFactory;
+import com.project.service.questionservice.OperationFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.Scanner;

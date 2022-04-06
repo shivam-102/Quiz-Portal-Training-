@@ -1,7 +1,7 @@
 package com.project.ui;
 import com.project.exceptions.InvalidChoiceException;
-import com.project.ui.questionui.QuestionOperationsUI;
-import com.project.ui.quizui.QuizOperationsUI;
+import com.project.ui.question.QuestionOperationsUI;
+import com.project.ui.quiz.QuizOperationsUI;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package com.project.service.questionservices;
+package com.project.service.questionservice;
 import com.project.Configurationn;
 import com.project.service.CustomObjectFactory;
 import com.project.service.Operation;

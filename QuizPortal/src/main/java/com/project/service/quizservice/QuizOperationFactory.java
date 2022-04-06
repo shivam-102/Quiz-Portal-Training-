@@ -1,4 +1,4 @@
-package com.project.service.quizservices;
+package com.project.service.quizservice;
 import com.project.Configurationn;
 import com.project.service.CustomObjectFactory;
 import com.project.service.Operation;

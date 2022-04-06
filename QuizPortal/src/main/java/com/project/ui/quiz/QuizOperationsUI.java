@@ -1,7 +1,7 @@
-package com.project.ui.quizui;
+package com.project.ui.quiz;
 
 import com.project.service.Operation;
-import com.project.service.quizservices.QuizOperationFactory;
+import com.project.service.quizservice.QuizOperationFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

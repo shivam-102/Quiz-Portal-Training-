@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-
+/*
 class ViewQuestionAvailableTest {
     EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("Quiz-Portal");
     EntityManager entityManager=entityManagerFactory.createEntityManager();
@@ -24,3 +24,5 @@ class ViewQuestionAvailableTest {
 
     }
 }
+
+ */
