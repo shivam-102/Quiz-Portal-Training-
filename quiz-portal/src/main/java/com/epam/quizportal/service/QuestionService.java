@@ -2,7 +2,6 @@ package com.epam.quizportal.service;
 
 import com.epam.quizportal.dao.QuestionRepository;
 import com.epam.quizportal.entity.Options;
-import org.aspectj.weaver.patterns.TypePatternQuestions;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +19,11 @@ public class QuestionService {
 
     @Autowired
     QuestionRepository questionRepository;
+
+
+    public List<Questions> viewQuestions(){
+        return questionRepository.findAll();
+    }
 
     public QuestionDTO insertQuestion(QuestionDTO questionDTO){
         Questions newQuestion=questionRepository.save(modelMapper.map(questionDTO,Questions.class));
@@ -89,48 +93,4 @@ public class QuestionService {
         }
     }
 
-
-    /*
-    EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("Quiz-Portal");
-    EntityManager entityManager=entityManagerFactory.createEntityManager();
-
-
-
-    public QuestionDTO insertQuestion(QuestionDTO questionDTO){
-        Questions newQuestion=questionRepository.save(modelmapper.map(questionDTO,Questions.class));
-        return modelmapper.map(newQuestion,QuestionDTO.class);
-
-    }
-    
-
-    
-    public List<Questions> viewQuestions() {
-    	//return modelmapper.map(questionDAO.viewQuestion(), QuestionDTO.class);
-    	
-    	return questionDAOimpl.viewQuestion();
-    }
-    
-    public boolean delete(Integer questionNumber) {
-    	return questionDAOimpl.delete(entityManager, questionNumber);
-    }
-    
-    public boolean modifyQuestionService(String newQuestion,Integer questionNumber) {
-    	return questionDAOimpl.modifyQuestion(entityManager, newQuestion, questionNumber);
-    }
-    
-    public boolean modifyDifficultyService(String newDifficulty,Integer questionNumber) {
-    	return questionDAOimpl.modifyDifficulty(entityManager, newDifficulty, questionNumber);
-    }
-    
-    public boolean modifyMarksService(Integer newMarks,Integer questionNumber) {
-    	return questionDAOimpl.modifyMarks(entityManager, newMarks, questionNumber);
-    }
-    
-    
-    public boolean modifyOptionsService(List<Options> newOptions,Integer questionNumber) {
-    	return questionDAOimpl.modifyOptions(entityManager, newOptions, questionNumber);
-    }
-
-
-     */
 }

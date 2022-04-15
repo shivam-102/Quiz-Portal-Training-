@@ -5,11 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.epam.quizportal.dto.QuestionDTO;
 import com.epam.quizportal.service.QuestionService;
-
 import java.util.List;
 
 @Controller
@@ -21,7 +21,7 @@ public class QuestionController {
 	@RequestMapping("/viewAvailableQuestions")
 	public ModelAndView viewQuestion(){
 		ModelAndView modelandview=new ModelAndView();
-		//modelandview.addObject("questions",questionservice.viewQuestions());
+		modelandview.addObject("questions",questionservice.viewQuestions());
 		modelandview.setViewName("viewQuestions");
 		return modelandview;
 	}
@@ -134,11 +134,11 @@ public class QuestionController {
 	}
 	
 	@PostMapping(value="modifyoptions")
-	public ModelAndView modifyOptions(List<Options> newOptions, Integer questionNumber) {
-		System.out.println(newOptions);
+	public ModelAndView modifyOptions(@RequestParam(name="option[]") List<Options> option, @RequestParam(name="questionNumber") Integer questionNumber) {
+		System.out.println(option);
 		ModelAndView modelandview=new ModelAndView();
-		System.out.println(newOptions);
-		Boolean response=questionservice.modifyOptions(questionNumber,newOptions);
+		System.out.println(option);
+		Boolean response=questionservice.modifyOptions(questionNumber,option);
 		if(response==true) {
 			modelandview.setViewName("success");
 			

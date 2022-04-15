@@ -3,7 +3,15 @@ package com.epam.quizportal.dto;
 import java.util.List;
 
 import com.epam.quizportal.entity.Questions;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class QuizDTO {
 	int code;
 	List<Questions> questionsList;
@@ -18,14 +26,6 @@ public class QuizDTO {
 	}
 	public void setQuestionsList(List<Questions> questionsList) {
 		this.questionsList = questionsList;
-	}
-	public QuizDTO(int code, List<Questions> questionsList) {
-		super();
-		this.code = code;
-		this.questionsList = questionsList;
-	}
-	public QuizDTO() {
-		super();
 	}
 	@Override
 	public String toString() {

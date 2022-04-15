@@ -1,5 +1,10 @@
 package com.epam.quizportal.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,6 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name="Options_Table")
 public class Options {
@@ -17,51 +27,6 @@ public class Options {
     private boolean isAnswer;
     @ManyToOne
     private Questions questions;
-    
-    public Options() {
-    	
-    }
-   
-    
-	public int getOptionId() {
-		return optionId;
-	}
-
-
-	public void setOptionId(int optionId) {
-		this.optionId = optionId;
-	}
-
-
-	public String getValue() {
-		return value;
-	}
-
-
-	public void setValue(String value) {
-		this.value = value;
-	}
-
-
-	public boolean isAnswer() {
-		return isAnswer;
-	}
-
-
-	public void setAnswer(boolean isAnswer) {
-		this.isAnswer = isAnswer;
-	}
-
-
-	public Questions getQuestions() {
-		return questions;
-	}
-
-
-	public void setQuestions(Questions questions) {
-		this.questions = questions;
-	}
-
 
 	@Override
 	public String toString() {

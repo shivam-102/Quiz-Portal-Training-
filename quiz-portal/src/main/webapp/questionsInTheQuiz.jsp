@@ -11,11 +11,18 @@
 <h2>Question in this List</h2>
 <table border="1">
 <tr>
-<th>Code</th>
-<th>Questions List</th>
+<th>Question Id</th>
+<th>Question</th>
+<th>Difficulty</th>
+<th>Marks</th>
 </tr>
-<c:forEach var="question" items="${quiz.questionsList}">
-<td>${question}</td>
+<c:forEach var="title" items="${quiz.questionsList}">
+<tr>
+<td>${title.questionId}</td>
+<td>${title.question}</td>
+<td>${title.difficulty}</td>
+<td>${title.marks}</td>
+</tr>
 </c:forEach>
 </table>
 </body>

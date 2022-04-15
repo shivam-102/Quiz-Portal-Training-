@@ -11,6 +11,7 @@ import com.epam.quizportal.entity.User;
 @Component
 public class UserDAO {
 	/*
+
 	EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("Quiz-Portal");
     
     public User userCredentialVerification(String userName,String password) {
@@ -48,6 +49,10 @@ public class UserDAO {
     	}
     	
     }
+
+
+}
+
 
 	 */
 }
