@@ -1,6 +1,6 @@
 package com.epam.quizportal.controller;
 
-import com.epam.quizportal.entity.Options;
+import com.epam.quizportal.dto.OptionsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +16,8 @@ import java.util.List;
 public class QuestionController {
 	@Autowired
 	QuestionService questionservice;
+
+	static final String SUCCESS="success";
 	
 	
 	@RequestMapping("/viewAvailableQuestions")
@@ -37,7 +39,7 @@ public class QuestionController {
 	public ModelAndView addingQuestion(QuestionDTO questiondto) {
 		ModelAndView modelandview=new ModelAndView();
 		questionservice.insertQuestion(questiondto);
-		modelandview.setViewName("success");
+		modelandview.setViewName(SUCCESS);
 		return modelandview;
 		
 	}
@@ -55,7 +57,7 @@ public class QuestionController {
 	public ModelAndView deletingQuestion(Integer questionNumber) {
 		ModelAndView modelandview=new ModelAndView();
 		questionservice.deleteQuestion(questionNumber);
-		modelandview.setViewName("success");
+		modelandview.setViewName(SUCCESS);
 		return modelandview;
 	}
 
@@ -70,13 +72,14 @@ public class QuestionController {
 	@PostMapping(value="modifyquestion")
 	public ModelAndView modifyQuestion(Integer questionNumber,String newQuestion) {
 		ModelAndView modelandview=new ModelAndView();
-		Boolean response=questionservice.modifyQuestion(questionNumber,newQuestion);
-		if(response==true) {
-			modelandview.setViewName("success");
+		boolean response=questionservice.modifyQuestion(questionNumber,newQuestion);
+		if(response) {
+			modelandview.setViewName(SUCCESS);
 			
 		}
 		else {
 			modelandview.setViewName("modifyQuestionPage");
+
 		}
 		return modelandview;
 	}
@@ -92,9 +95,9 @@ public class QuestionController {
 	@PostMapping(value="modifydifficulty")
 	public ModelAndView modifyDifficulty(Integer questionNumber,String newDifficulty) {
 		ModelAndView modelandview=new ModelAndView();
-		Boolean response=questionservice.modifyDifficulty(questionNumber,newDifficulty);
-		if(response==true) {
-			modelandview.setViewName("success");
+		boolean response=questionservice.modifyDifficulty(questionNumber,newDifficulty);
+		if(response) {
+			modelandview.setViewName(SUCCESS);
 			
 		}
 		else {
@@ -114,9 +117,9 @@ public class QuestionController {
 	@PostMapping(value="modifymarks")
 	public ModelAndView modifyMarks(Integer questionNumber,Integer newMarks) {
 		ModelAndView modelandview=new ModelAndView();
-		Boolean response=questionservice.modifyMarks(questionNumber,newMarks);
-		if(response==true) {
-			modelandview.setViewName("success");
+		boolean response=questionservice.modifyMarks(questionNumber,newMarks);
+		if(response) {
+			modelandview.setViewName(SUCCESS);
 			
 		}
 		else {
@@ -134,13 +137,11 @@ public class QuestionController {
 	}
 	
 	@PostMapping(value="modifyoptions")
-	public ModelAndView modifyOptions(@RequestParam(name="option[]") List<Options> option, @RequestParam(name="questionNumber") Integer questionNumber) {
-		System.out.println(option);
+	public ModelAndView modifyOptions(@RequestParam(name="option[]") List<OptionsDTO> option, @RequestParam(name="questionNumber") Integer questionNumber) {
 		ModelAndView modelandview=new ModelAndView();
-		System.out.println(option);
-		Boolean response=questionservice.modifyOptions(questionNumber,option);
-		if(response==true) {
-			modelandview.setViewName("success");
+		boolean response=questionservice.modifyOptions(questionNumber,option);
+		if(response) {
+			modelandview.setViewName(SUCCESS);
 			
 		}
 		else {

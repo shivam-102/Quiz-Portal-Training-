@@ -2,14 +2,15 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Questions in the Quiz</title>
 </head>
 <body>
-<h2>Question in this List</h2>
+<h2>Question in this Quiz</h2>
 <table border="1">
+<caption>Questions in this quiz</caption>
 <tr>
 <th>Question Id</th>
 <th>Question</th>

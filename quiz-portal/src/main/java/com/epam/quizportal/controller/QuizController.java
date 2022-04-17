@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.epam.quizportal.entity.Questions;
 import com.epam.quizportal.service.QuizService;
 
 @Controller
@@ -19,7 +18,7 @@ public class QuizController {
 	@Autowired
 	QuizService quizservice;
 
-
+	static final String SUCCESS="success";
 
 	@RequestMapping("/insertCode")
 	public ModelAndView viewQuiz(){
@@ -31,7 +30,6 @@ public class QuizController {
 	@PostMapping(value="questionsInTheQuiz")
 	public ModelAndView viewQuizInsertCode(int code) {
 		ModelAndView modelandview=new ModelAndView();
-		System.out.println(code);
 		modelandview.addObject("quiz",quizservice.viewQuiz(code));
 		modelandview.setViewName("questionsInTheQuiz");
 		return modelandview;
@@ -53,39 +51,39 @@ public class QuizController {
 				  .map(Integer::parseInt)
 				  .collect(Collectors.toList());
 		quizservice.createQuiz(questionList);
-		modelandview.setViewName("success");
+		modelandview.setViewName(SUCCESS);
 		return modelandview;
 	}
 
-//	@RequestMapping("/modificationAddOperation")
-//	public ModelAndView modificationAddQuestionPage() {
-//		ModelAndView modelandview=new ModelAndView();
-//		modelandview.setViewName("modifyAddPage");
-//		return modelandview;
-//	}
-//
-//	@PostMapping(value="addQuestionToQuiz")
-//	public ModelAndView modificationAddQuestion(Integer code,Integer questionToAdd) {
-//		ModelAndView modelandview=new ModelAndView();
-//		quizservice.addQuestion(code, questionToAdd);
-//		modelandview.setViewName("success");
-//		return modelandview;
-//	}
-//
-//	@RequestMapping("/modificationDeleteOperation")
-//	public ModelAndView modificationDeleteQuestionPage() {
-//		ModelAndView modelandview=new ModelAndView();
-//		modelandview.setViewName("modifyDeletePage");
-//		return modelandview;
-//	}
-//
-//	@PostMapping(value="deleteQuestionfromQuiz")
-//	public ModelAndView modificationDeleteQuestion(Integer code,Integer questionToDelete) {
-//		ModelAndView modelandview=new ModelAndView();
-//		quizservice.deleteQuestion(code, questionToDelete);
-//		modelandview.setViewName("success");
-//		return modelandview;
-//	}
+	@RequestMapping("/modificationAddOperation")
+	public ModelAndView modificationAddQuestionPage() {
+		ModelAndView modelandview=new ModelAndView();
+		modelandview.setViewName("modifyAddPage");
+		return modelandview;
+	}
+
+	@PostMapping(value="addQuestionToQuiz")
+	public ModelAndView modificationAddQuestion(Integer code,Integer questionToAdd) {
+		ModelAndView modelandview=new ModelAndView();
+		quizservice.addQuestionToQuiz(code, questionToAdd);
+		modelandview.setViewName(SUCCESS);
+		return modelandview;
+	}
+
+	@RequestMapping("/modificationDeleteOperation")
+	public ModelAndView modificationDeleteQuestionPage() {
+		ModelAndView modelandview=new ModelAndView();
+		modelandview.setViewName("modifyDeletePage");
+		return modelandview;
+	}
+
+	@PostMapping(value="deleteQuestionfromQuiz")
+	public ModelAndView modificationDeleteQuestion(Integer code,Integer questionToDelete) {
+		ModelAndView modelandview=new ModelAndView();
+		quizservice.deleteQuestionFromQuiz(code, questionToDelete);
+		modelandview.setViewName(SUCCESS);
+		return modelandview;
+	}
 
 
 }

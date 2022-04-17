@@ -2,6 +2,7 @@ package com.epam.quizportal.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.epam.quizportal.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,8 +34,8 @@ public class HomeController {
 	public ModelAndView userVerification(String userName, String password,HttpServletRequest request) {
 		ModelAndView modelandview=new ModelAndView();
 		boolean response=userservice.verify(userName, password);
-		HttpSession session=request.getSession();
-		if(response==true) {
+		request.getSession();
+		if(response) {
 			modelandview.setViewName("homePage");
 		}
 		else {
@@ -52,11 +53,10 @@ public class HomeController {
 	}
 
 	@PostMapping(value = "register")
-	public ModelAndView userRegistration(User user) {
-		System.out.println(user.getUsername()+" "+user.getPassword());
+	public ModelAndView userRegistration(UserDTO user) {
 		ModelAndView modelandview=new ModelAndView();
-		Boolean response=userservice.register(user);
-		if(response==true) {
+		boolean response=userservice.register(user);
+		if(response) {
 			modelandview.setViewName("userLogin");
 		}
 		else {

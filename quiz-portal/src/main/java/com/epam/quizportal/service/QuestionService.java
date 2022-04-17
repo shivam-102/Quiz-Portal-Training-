@@ -1,7 +1,7 @@
 package com.epam.quizportal.service;
 
 import com.epam.quizportal.dao.QuestionRepository;
-import com.epam.quizportal.entity.Options;
+import com.epam.quizportal.dto.OptionsDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,67 +30,66 @@ public class QuestionService {
         return modelMapper.map(newQuestion,QuestionDTO.class);
     }
 
-    public void deleteQuestion(Integer questionId){
-        questionRepository.deleteById(questionId);
+    public boolean deleteQuestion(Integer questionId){
+        Optional<Questions> optionalQuestions=questionRepository.findById(questionId);
+        boolean status=false;
+        if(optionalQuestions.isPresent()){
+            questionRepository.deleteById(questionId);
+            status=true;
+        }
+        return status;
 
     }
 
     public Boolean modifyQuestion(Integer questionNumber,String newQuestion){
         Optional<Questions> optionalQuestions=questionRepository.findById(questionNumber);
+        boolean status=false;
         if(optionalQuestions.isPresent()){
-            Questions questions=optionalQuestions.get();
+            QuestionDTO questions=modelMapper.map(optionalQuestions.get(),QuestionDTO.class);
             questions.setQuestion(newQuestion);
-            questionRepository.save(questions);
-            return true;
+            questionRepository.save(modelMapper.map(questions,Questions.class));
+            status=true;
 
         }
-        else{
-            return false;
-        }
-
+        return status;
     }
 
     public Boolean modifyDifficulty(Integer questionNumber,String newDifficulty){
         Optional<Questions> optionalQuestions=questionRepository.findById(questionNumber);
+        boolean status=false;
         if(optionalQuestions.isPresent()){
-            Questions questions=optionalQuestions.get();
+            QuestionDTO questions=modelMapper.map(optionalQuestions.get(),QuestionDTO.class);
             questions.setDifficulty(newDifficulty);
-            questionRepository.save(questions);
-            return true;
+            questionRepository.save(modelMapper.map(questions,Questions.class));
+           status=true;
 
         }
-        else{
-            return false;
-        }
-
+        return status;
     }
     public Boolean modifyMarks(Integer questionNumber,Integer newMarks){
         Optional<Questions> optionalQuestions=questionRepository.findById(questionNumber);
+        boolean status=false;
         if(optionalQuestions.isPresent()){
-            Questions questions=optionalQuestions.get();
+            QuestionDTO questions=modelMapper.map(optionalQuestions.get(),QuestionDTO.class);
             questions.setMarks(newMarks);
-            questionRepository.save(questions);
-            return true;
+            questionRepository.save(modelMapper.map(questions,Questions.class));
+            status=true;
 
         }
-        else{
-            return false;
-        }
-
+        return status;
     }
 
-    public Boolean modifyOptions(Integer questionNumber, List<Options> newOptions){
+    public Boolean modifyOptions(Integer questionNumber, List<OptionsDTO> newOptions){
         Optional<Questions> optionalQuestions=questionRepository.findById(questionNumber);
+        boolean status=false;
         if(optionalQuestions.isPresent()){
-            Questions questions=optionalQuestions.get();
+            QuestionDTO questions=modelMapper.map(optionalQuestions.get(),QuestionDTO.class);
             questions.setOption(newOptions);
-            questionRepository.save(questions);
-            return true;
+            questionRepository.save(modelMapper.map(questions,Questions.class));
+            status=true;
 
         }
-        else{
-            return false;
-        }
+        return status;
     }
 
 }

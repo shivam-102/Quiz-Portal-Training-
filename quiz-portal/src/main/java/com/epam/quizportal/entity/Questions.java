@@ -49,7 +49,6 @@ public class Questions {
 	}
 
 	public void setOption(List<Options> option) {
-		System.out.println(option);
         option.forEach(options -> options.setQuestions(this));
         this.option = option;
     }

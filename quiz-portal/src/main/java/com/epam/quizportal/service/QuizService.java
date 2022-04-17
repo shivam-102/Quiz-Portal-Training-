@@ -4,16 +4,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import com.epam.quizportal.dao.QuestionRepository;
 import com.epam.quizportal.dao.QuizRepository;
+import com.epam.quizportal.dto.QuizDTO;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.epam.quizportal.dao.QuizDAO;
 import com.epam.quizportal.entity.Questions;
 import com.epam.quizportal.entity.Quiz;
 
@@ -26,25 +23,28 @@ public class QuizService {
     @Autowired
     QuestionRepository questionRepository;
 
+    @Autowired
+    ModelMapper modelMapper;
+
     Random random=new Random();
 
 
     public Quiz viewQuiz(Integer code){
         Optional<Quiz> quiz=quizRepository.findById(code);
         if(quiz.isPresent()){
-            Quiz quizQuestions=quiz.get();
-            return quizQuestions;
+            QuizDTO quizQuestions=modelMapper.map(quiz.get(),QuizDTO.class);
+            return modelMapper.map(quizQuestions,Quiz.class);
         }
 
         return null;
     }
     public boolean createQuiz(List<Integer> questionIdList){
         Integer uniqueKey=findCodeExistence();
-        Quiz quiz=new Quiz();
+        QuizDTO quiz=new QuizDTO();
         quiz.setCode(uniqueKey);
         List<Questions> questionsList=questionRepository.findAllById(questionIdList);
         quiz.setQuestionsList(questionsList);
-        quizRepository.save(quiz);
+        quizRepository.save(modelMapper.map(quiz,Quiz.class));
         return false;
     }
 
@@ -56,38 +56,18 @@ public class QuizService {
         }
         return uniqueKey;
     }
-	/*
-	EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("Quiz-Portal");
-    EntityManager entityManager=entityManagerFactory.createEntityManager();
-	
-	@Autowired
-	QuizDAO quizDAO;
-	
-	public boolean createQuizService(List<Integer> questionsList) {
-		int uniqueCode=uniqueQuizCode();
-		return quizDAO.createQuiz(uniqueCode,entityManager,questionsList);
-
-	}
-	
-	public int uniqueQuizCode() {
-		return quizDAO.findCodeExistence();
-	}
-	
-	
-	public Quiz viewQuizQuestions(int code){
-		return quizDAO.questionsInTheQuiz(code);
-	}
-	
-	public boolean addQuestion(int code,int questionNumber){
-        return quizDAO.addQuestion(code,questionNumber);
-
+    public void addQuestionToQuiz(Integer code, Integer questionToBeAdded){
+        QuizDTO quiz=modelMapper.map(quizRepository.getById(code),QuizDTO.class);
+        Questions question=questionRepository.getById(questionToBeAdded);
+        quiz.getQuestionsList().add(question);
+        quizRepository.save(modelMapper.map(quiz,Quiz.class));
     }
 
-    public boolean deleteQuestion(int code,int questionNumber){
-        return quizDAO.deleteQuestion(code,questionNumber);
+    public void deleteQuestionFromQuiz(Integer code,Integer questionToBeDeleted){
+        QuizDTO quiz=modelMapper.map(quizRepository.getById(code),QuizDTO.class);
+        Questions question=questionRepository.getById(questionToBeDeleted);
+        quiz.getQuestionsList().remove(question);
+        quizRepository.save(modelMapper.map(quiz,Quiz.class));
     }
 
-
-
-	 */
 }

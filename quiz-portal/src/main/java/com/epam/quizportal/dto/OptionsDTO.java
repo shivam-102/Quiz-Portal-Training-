@@ -1,6 +1,5 @@
 package com.epam.quizportal.dto;
 
-import com.epam.quizportal.entity.Questions;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
