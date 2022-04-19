@@ -28,7 +28,7 @@ public class QuizController {
 	}
 
 	@PostMapping(value="questionsInTheQuiz")
-	public ModelAndView viewQuizInsertCode(int code) {
+	public ModelAndView viewQuizInsertCode(Integer code) {
 		ModelAndView modelandview=new ModelAndView();
 		modelandview.addObject("quiz",quizservice.viewQuiz(code));
 		modelandview.setViewName("questionsInTheQuiz");

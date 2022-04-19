@@ -41,7 +41,7 @@ public class QuestionService {
 
     }
 
-    public Boolean modifyQuestion(Integer questionNumber,String newQuestion){
+    public boolean modifyQuestion(Integer questionNumber,String newQuestion){
         Optional<Questions> optionalQuestions=questionRepository.findById(questionNumber);
         boolean status=false;
         if(optionalQuestions.isPresent()){
@@ -54,7 +54,7 @@ public class QuestionService {
         return status;
     }
 
-    public Boolean modifyDifficulty(Integer questionNumber,String newDifficulty){
+    public boolean modifyDifficulty(Integer questionNumber,String newDifficulty){
         Optional<Questions> optionalQuestions=questionRepository.findById(questionNumber);
         boolean status=false;
         if(optionalQuestions.isPresent()){

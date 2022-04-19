@@ -12,15 +12,13 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-
-
 	@Autowired
 	UserRepository userRepository;
 
 	@Autowired
 	ModelMapper modelMapper;
 
-	public boolean verify(String userName,String password){
+	public boolean verifyUser(String userName, String password){
 		Optional<User> userValidation=userRepository.findById(userName);
 		Boolean flag=false;
 		if(userValidation.isPresent()){
@@ -36,10 +34,10 @@ public class UserService {
 
 	public boolean register(UserDTO user){
 		Optional<User> fetchUser=userRepository.findById(user.getUsername());
-	    Boolean status=true;
+	    boolean status=false;
 		if(fetchUser.isEmpty()){
 			userRepository.save(modelMapper.map(user,User.class));
-			status=false;
+			status=true;
 		}
 		return status;
 	}

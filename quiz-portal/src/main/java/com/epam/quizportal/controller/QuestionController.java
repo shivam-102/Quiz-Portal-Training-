@@ -10,7 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.epam.quizportal.dto.QuestionDTO;
 import com.epam.quizportal.service.QuestionService;
-import java.util.List;
+
+import java.util.ArrayList;
 
 @Controller
 public class QuestionController {
@@ -18,8 +19,6 @@ public class QuestionController {
 	QuestionService questionservice;
 
 	static final String SUCCESS="success";
-	
-	
 	@RequestMapping("/viewAvailableQuestions")
 	public ModelAndView viewQuestion(){
 		ModelAndView modelandview=new ModelAndView();
@@ -27,7 +26,7 @@ public class QuestionController {
 		modelandview.setViewName("viewQuestions");
 		return modelandview;
 	}
-	
+
 	@RequestMapping("/addingQuestion")
 	public ModelAndView openPage() {
 		ModelAndView modelandview=new ModelAndView();
@@ -44,7 +43,6 @@ public class QuestionController {
 		
 	}
 
-
 	@RequestMapping("/deleteQuestion")
 	public ModelAndView deleteQuestionPage() {
 		ModelAndView modelandview=new ModelAndView();
@@ -59,6 +57,13 @@ public class QuestionController {
 		questionservice.deleteQuestion(questionNumber);
 		modelandview.setViewName(SUCCESS);
 		return modelandview;
+	}
+
+	@RequestMapping("/questionModification")
+	public ModelAndView questionModificationPage(){
+		ModelAndView modelAndView=new ModelAndView();
+		modelAndView.setViewName("questionModificationPage");
+		return modelAndView;
 	}
 
 	
@@ -137,7 +142,7 @@ public class QuestionController {
 	}
 	
 	@PostMapping(value="modifyoptions")
-	public ModelAndView modifyOptions(@RequestParam(name="option[]") List<OptionsDTO> option, @RequestParam(name="questionNumber") Integer questionNumber) {
+	public ModelAndView modifyOptions( ArrayList<OptionsDTO> option, @RequestParam(name="questionNumber") Integer questionNumber) {
 		ModelAndView modelandview=new ModelAndView();
 		boolean response=questionservice.modifyOptions(questionNumber,option);
 		if(response) {

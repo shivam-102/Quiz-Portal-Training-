@@ -15,6 +15,13 @@ public class OptionsDTO {
     String value;
     boolean isAnswer;
     QuestionDTO questions;
+
+	public OptionsDTO(int optionId, String value, boolean isAnswer) {
+		this.optionId = optionId;
+		this.value = value;
+		this.isAnswer = isAnswer;
+	}
+
 	@Override
 	public String toString() {
 		return "OptionsDTO [optionId=" + optionId + ", value=" + value + ", isAnswer=" + isAnswer + ", questions="

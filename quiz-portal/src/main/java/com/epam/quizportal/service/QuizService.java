@@ -40,12 +40,12 @@ public class QuizService {
     }
     public boolean createQuiz(List<Integer> questionIdList){
         Integer uniqueKey=findCodeExistence();
-        QuizDTO quiz=new QuizDTO();
+        Quiz quiz=new Quiz();
         quiz.setCode(uniqueKey);
         List<Questions> questionsList=questionRepository.findAllById(questionIdList);
         quiz.setQuestionsList(questionsList);
-        quizRepository.save(modelMapper.map(quiz,Quiz.class));
-        return false;
+        quizRepository.save(quiz);
+        return true;
     }
 
     public Integer findCodeExistence(){
@@ -56,18 +56,20 @@ public class QuizService {
         }
         return uniqueKey;
     }
-    public void addQuestionToQuiz(Integer code, Integer questionToBeAdded){
+    public boolean addQuestionToQuiz(Integer code, Integer questionToBeAdded){
         QuizDTO quiz=modelMapper.map(quizRepository.getById(code),QuizDTO.class);
         Questions question=questionRepository.getById(questionToBeAdded);
         quiz.getQuestionsList().add(question);
         quizRepository.save(modelMapper.map(quiz,Quiz.class));
+        return true;
     }
 
-    public void deleteQuestionFromQuiz(Integer code,Integer questionToBeDeleted){
+    public boolean deleteQuestionFromQuiz(Integer code,Integer questionToBeDeleted){
         QuizDTO quiz=modelMapper.map(quizRepository.getById(code),QuizDTO.class);
         Questions question=questionRepository.getById(questionToBeDeleted);
         quiz.getQuestionsList().remove(question);
         quizRepository.save(modelMapper.map(quiz,Quiz.class));
+        return true;
     }
 
 }

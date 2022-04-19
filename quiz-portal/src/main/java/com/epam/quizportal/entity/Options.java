@@ -27,7 +27,14 @@ public class Options {
     @ManyToOne
     private Questions questions;
 
-	@Override
+    public Options(int optionId, String value, boolean isAnswer) {
+        this.optionId = optionId;
+        this.value = value;
+        this.isAnswer = isAnswer;
+
+    }
+
+    @Override
 	public String toString() {
 		return "Options [optionId=" + optionId + ", value=" + value + ", isAnswer=" + isAnswer + ", questions="
 				+ questions + "]";
