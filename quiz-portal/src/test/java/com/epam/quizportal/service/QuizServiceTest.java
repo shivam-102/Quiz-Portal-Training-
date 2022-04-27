@@ -50,7 +50,7 @@ class QuizServiceTest {
 
     List<Questions> questionsList;
 
-    List<Questions> questionDTOList;
+    List<QuestionDTO> questionDTOList;
 
     List<Integer> questionIdList;
 
@@ -66,7 +66,7 @@ class QuizServiceTest {
         quizDTO=new QuizDTO();
         quizDTO.setCode(102);
         questionDTOList=new ArrayList<>();
-        questionDTOList.addAll(List.of(new Questions(1,"Favorite Song?","easy",2),new Questions(2,"Thor:4?","medium",1)));;
+        questionDTOList.addAll(List.of(new QuestionDTO(1,"Favorite Song?","easy",2),new QuestionDTO(2,"Thor:4?","medium",1)));;
         quizDTO.setQuestionsList(questionDTOList);
 
         questionIdList=new ArrayList<>();

@@ -53,10 +53,4 @@ public class Questions {
         this.option = option;
     }
 
-
-//	@Override
-//	public String toString() {
-//		return "Questions [questionId=" + questionId + ", question=" + question + ", difficulty=" + difficulty
-//				+ ", marks=" + marks + ", option=" + option + "]";
-//	}
 }

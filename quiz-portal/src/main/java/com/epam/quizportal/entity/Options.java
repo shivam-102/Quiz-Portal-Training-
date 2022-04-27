@@ -1,5 +1,6 @@
 package com.epam.quizportal.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,11 +35,5 @@ public class Options {
 
     }
 
-    @Override
-	public String toString() {
-		return "Options [optionId=" + optionId + ", value=" + value + ", isAnswer=" + isAnswer + ", questions="
-				+ questions + "]";
-	}
-    
 
 }

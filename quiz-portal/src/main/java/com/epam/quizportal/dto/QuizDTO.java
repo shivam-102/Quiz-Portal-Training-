@@ -14,17 +14,17 @@ import lombok.Setter;
 @AllArgsConstructor
 public class QuizDTO {
 	int code;
-	List<Questions> questionsList;
+	List<QuestionDTO> questionsList;
 	public int getCode() {
 		return code;
 	}
 	public void setCode(int code) {
 		this.code = code;
 	}
-	public List<Questions> getQuestionsList() {
+	public List<QuestionDTO> getQuestionsList() {
 		return questionsList;
 	}
-	public void setQuestionsList(List<Questions> questionsList) {
+	public void setQuestionsList(List<QuestionDTO> questionsList) {
 		this.questionsList = questionsList;
 	}
 	@Override

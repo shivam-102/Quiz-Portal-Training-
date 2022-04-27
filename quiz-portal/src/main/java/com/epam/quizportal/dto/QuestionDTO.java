@@ -1,6 +1,8 @@
 package com.epam.quizportal.dto;
 
 import java.util.List;
+
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +24,7 @@ public class QuestionDTO {
 	@Setter
     private Integer marks;
 	@Getter
+	@Setter
     private List<OptionsDTO> option;
     
     public QuestionDTO(Integer questionId,String question,String difficulty,Integer marks) {
@@ -36,12 +39,4 @@ public class QuestionDTO {
 		this.option = option;
 	}
 
-
-	@Override
-	public String toString() {
-		return "QuestionDTO [questionId=" + questionId + ", question=" + question + ", difficulty=" + difficulty
-				+ ", marks=" + marks + ", option=" + option + "]";
-	}
-    
-    
 }

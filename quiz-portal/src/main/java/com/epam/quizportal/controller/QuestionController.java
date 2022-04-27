@@ -19,6 +19,7 @@ public class QuestionController {
 	QuestionService questionservice;
 
 	static final String SUCCESS="success";
+
 	@RequestMapping("/viewAvailableQuestions")
 	public ModelAndView viewQuestion(){
 		ModelAndView modelandview=new ModelAndView();

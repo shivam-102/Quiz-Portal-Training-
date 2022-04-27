@@ -1,15 +1,19 @@
 package com.epam.quizportal.service;
 
+import com.epam.quizportal.Exception.QuestionNotFoundException;
 import com.epam.quizportal.dao.QuestionRepository;
 import com.epam.quizportal.dto.OptionsDTO;
+import com.epam.quizportal.dto.QuestionDTO;
+import com.epam.quizportal.entity.Options;
+import com.epam.quizportal.entity.Questions;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.epam.quizportal.dto.QuestionDTO;
-import com.epam.quizportal.entity.Questions;
-
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class QuestionService {
@@ -21,8 +25,10 @@ public class QuestionService {
     QuestionRepository questionRepository;
 
 
-    public List<Questions> viewQuestions(){
-        return questionRepository.findAll();
+    public List<QuestionDTO> viewQuestions(){
+        Type listType=new TypeToken<List<QuestionDTO>>(){}.getType();
+        return modelMapper.map(questionRepository.findAll(),listType);
+
     }
 
     public QuestionDTO insertQuestion(QuestionDTO questionDTO){
@@ -30,28 +36,62 @@ public class QuestionService {
         return modelMapper.map(newQuestion,QuestionDTO.class);
     }
 
-    public boolean deleteQuestion(Integer questionId){
+    public String deleteQuestion(Integer questionId){
         Optional<Questions> optionalQuestions=questionRepository.findById(questionId);
-        boolean status=false;
-        if(optionalQuestions.isPresent()){
-            questionRepository.deleteById(questionId);
-            status=true;
+        if(optionalQuestions.isEmpty()){
+            throw new QuestionNotFoundException();
         }
-        return status;
+        questionRepository.deleteById(questionId);
+        return "Deleted";
 
     }
 
+    public QuestionDTO updateQuestion(QuestionDTO questionDTO){
+
+        Optional<Questions> questions=questionRepository.findById(questionDTO.getQuestionId());
+        if(questions.isEmpty()){
+            throw new QuestionNotFoundException();
+        }
+            Questions question=questions.get();
+            question.setQuestion(questionDTO.getQuestion());
+            question.setDifficulty(questionDTO.getDifficulty());
+            question.setMarks(questionDTO.getMarks());
+            question.setOption(toListEntityOptions(questionDTO.getOption()));
+            return modelMapper.map(questionRepository.save(question),QuestionDTO.class);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public boolean modifyQuestion(Integer questionNumber,String newQuestion){
         Optional<Questions> optionalQuestions=questionRepository.findById(questionNumber);
-        boolean status=false;
-        if(optionalQuestions.isPresent()){
-            QuestionDTO questions=modelMapper.map(optionalQuestions.get(),QuestionDTO.class);
-            questions.setQuestion(newQuestion);
-            questionRepository.save(modelMapper.map(questions,Questions.class));
-            status=true;
-
+        if(optionalQuestions.isEmpty()){
+            throw new QuestionNotFoundException();
         }
-        return status;
+        QuestionDTO questions=modelMapper.map(optionalQuestions.get(),QuestionDTO.class);
+        questions.setQuestion(newQuestion);
+        questionRepository.save(modelMapper.map(questions,Questions.class));
+        return true;
+
     }
 
     public boolean modifyDifficulty(Integer questionNumber,String newDifficulty){
@@ -90,6 +130,10 @@ public class QuestionService {
 
         }
         return status;
+    }
+
+    public List<Options> toListEntityOptions(List<OptionsDTO> optionsDTOS){
+        return optionsDTOS.stream().map(option -> modelMapper.map(option,Options.class)).collect(Collectors.toList());
     }
 
 }

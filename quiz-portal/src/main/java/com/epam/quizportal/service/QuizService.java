@@ -1,12 +1,17 @@
 package com.epam.quizportal.service;
 
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
+import com.epam.quizportal.Exception.QuestionNotFoundException;
+import com.epam.quizportal.Exception.QuizNotFoundException;
 import com.epam.quizportal.dao.QuestionRepository;
 import com.epam.quizportal.dao.QuizRepository;
+import com.epam.quizportal.dto.QuestionDTO;
 import com.epam.quizportal.dto.QuizDTO;
+import com.google.common.reflect.TypeToken;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,26 +31,30 @@ public class QuizService {
     @Autowired
     ModelMapper modelMapper;
 
-    Random random=new Random();
+    @Autowired
+    Random random;
 
 
-    public Quiz viewQuiz(Integer code){
+
+    public QuizDTO viewQuiz(Integer code){
         Optional<Quiz> quiz=quizRepository.findById(code);
-        if(quiz.isPresent()){
-            QuizDTO quizQuestions=modelMapper.map(quiz.get(),QuizDTO.class);
-            return modelMapper.map(quizQuestions,Quiz.class);
+        if(quiz.isEmpty()){
+            throw new QuizNotFoundException();
         }
-
-        return null;
+        QuizDTO quizQuestions=modelMapper.map(quiz.get(),QuizDTO.class);
+        return quizQuestions;
     }
-    public boolean createQuiz(List<Integer> questionIdList){
+
+    public QuizDTO createQuiz(List<Integer> questionIdList){
         Integer uniqueKey=findCodeExistence();
-        Quiz quiz=new Quiz();
-        quiz.setCode(uniqueKey);
-        List<Questions> questionsList=questionRepository.findAllById(questionIdList);
-        quiz.setQuestionsList(questionsList);
-        quizRepository.save(quiz);
-        return true;
+        Type listType=new TypeToken<List<QuestionDTO>>(){}.getType();
+        List<QuestionDTO> questionDTOList=modelMapper.map(questionRepository.findAllById(questionIdList),listType);
+        QuizDTO quizDto=new QuizDTO();
+        quizDto.setCode(uniqueKey);
+        quizDto.setQuestionsList(questionDTOList);
+        Quiz quiz= quizRepository.save(modelMapper.map(quizDto,Quiz.class));
+        return modelMapper.map(quiz,QuizDTO.class);
+
     }
 
     public Integer findCodeExistence(){
@@ -56,20 +65,32 @@ public class QuizService {
         }
         return uniqueKey;
     }
-    public boolean addQuestionToQuiz(Integer code, Integer questionToBeAdded){
-        QuizDTO quiz=modelMapper.map(quizRepository.getById(code),QuizDTO.class);
-        Questions question=questionRepository.getById(questionToBeAdded);
+
+    public QuizDTO addQuestionToQuiz(Integer code, Integer questionToBeAdded){
+        Optional<Quiz> optionalQuiz=quizRepository.findById(code);
+        if(optionalQuiz.isEmpty()){
+            throw new QuizNotFoundException();
+        }
+        Optional<Questions> optionalQuestions=questionRepository.findById(questionToBeAdded);
+        if(optionalQuestions.isEmpty()){
+            throw new QuestionNotFoundException();
+        }
+        QuizDTO quiz=modelMapper.map(optionalQuiz.get(),QuizDTO.class);
+        QuestionDTO question=modelMapper.map(optionalQuestions.get(),QuestionDTO.class);
         quiz.getQuestionsList().add(question);
-        quizRepository.save(modelMapper.map(quiz,Quiz.class));
-        return true;
+        return modelMapper.map(quizRepository.save(modelMapper.map(quiz,Quiz.class)),QuizDTO.class);
+
     }
 
-    public boolean deleteQuestionFromQuiz(Integer code,Integer questionToBeDeleted){
-        QuizDTO quiz=modelMapper.map(quizRepository.getById(code),QuizDTO.class);
+    public QuizDTO deleteQuestionFromQuiz(Integer code,Integer questionToBeDeleted){
+        Optional<Quiz> optionalQuiz=quizRepository.findById(code);
+        if(optionalQuiz.isEmpty()){
+            throw new QuizNotFoundException();
+        }
+        Quiz quiz=optionalQuiz.get();
         Questions question=questionRepository.getById(questionToBeDeleted);
         quiz.getQuestionsList().remove(question);
-        quizRepository.save(modelMapper.map(quiz,Quiz.class));
-        return true;
+        Quiz quizEntity=quizRepository.save(modelMapper.map(quiz,Quiz.class));
+        return modelMapper.map(quizEntity,QuizDTO.class);
     }
-
 }

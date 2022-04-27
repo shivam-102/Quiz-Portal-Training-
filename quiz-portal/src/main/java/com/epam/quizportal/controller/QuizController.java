@@ -16,9 +16,9 @@ import com.epam.quizportal.service.QuizService;
 public class QuizController {
 
 	@Autowired
-	QuizService quizservice;
+	private QuizService quizservice;
 
-	static final String SUCCESS="success";
+	private static final String SUCCESS="success";
 
 	@RequestMapping("/insertCode")
 	public ModelAndView viewQuiz(){

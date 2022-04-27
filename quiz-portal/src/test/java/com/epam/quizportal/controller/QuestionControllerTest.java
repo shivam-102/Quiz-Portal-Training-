@@ -61,7 +61,7 @@ class QuestionControllerTest {
     @Test
     void deletingQuestion() throws Exception {
         int mockQuestionId=1;
-        when(questionService.deleteQuestion(mockQuestionId)).thenReturn(true);
+        //when(questionService.deleteQuestion(mockQuestionId)).thenReturn(true);
         mockMvc.perform(post("/modifyQuestion")).andExpect(view().name("modifyQuestionPage"));
     }
 
