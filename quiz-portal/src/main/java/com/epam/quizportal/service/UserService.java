@@ -60,9 +60,9 @@ public class UserService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		System.out.println("Username"+username);
+
 		User user=userDAO.findByUsername(username);
-		System.out.println(user.toString());
+
 
 		if(user==null){
 			throw new UsernameNotFoundException("User not registered");

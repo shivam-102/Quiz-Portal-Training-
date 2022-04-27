@@ -7,10 +7,10 @@
 <title>Login</title>
 </head>
 <body>
-<form action="userValidation" method="post">
-<pre>User Name:<input type="text" name="username"><br>
-Password :<input type="text" name="password">
-<input type="submit" name="submit">
+<form action="userLogin" method="post">
+<pre>User Name:<input type="text" id="username" name="username"><br>
+Password :<input type="password" id="password" name="password">
+<input type="submit" value="submit">
 </pre>
 </form>
 </body>
