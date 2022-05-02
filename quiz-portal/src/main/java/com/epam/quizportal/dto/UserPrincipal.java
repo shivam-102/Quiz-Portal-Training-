@@ -1,25 +1,35 @@
 package com.epam.quizportal.dto;
 
+import com.epam.quizportal.entity.AuthGroup;
 import com.epam.quizportal.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.yaml.snakeyaml.events.CollectionStartEvent;
 
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 
 public class UserPrincipal implements UserDetails {
 
     private User user;
 
-    public UserPrincipal(User user){
+    private List<AuthGroup> authGroupList;
+
+    public UserPrincipal(User user,List<AuthGroup> authGroupList){
         super();
         this.user=user;
+        this.authGroupList=authGroupList;
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("USER"));
+        if(authGroupList==null){
+            return Collections.emptySet();
+        }
+
+        Set<SimpleGrantedAuthority> grantedAuthorities=new HashSet<>();
+        authGroupList.forEach(group->{
+            grantedAuthorities.add(new SimpleGrantedAuthority(group.getAuthGroup()));
+        });
+        return grantedAuthorities;
     }
 
     @Override

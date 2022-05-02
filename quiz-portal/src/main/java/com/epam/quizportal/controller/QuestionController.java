@@ -2,6 +2,7 @@ package com.epam.quizportal.controller;
 
 import com.epam.quizportal.dto.OptionsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ public class QuestionController {
 	static final String SUCCESS="success";
 
 	@RequestMapping("/viewAvailableQuestions")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView viewQuestion(){
 		ModelAndView modelandview=new ModelAndView();
 		modelandview.addObject("questions",questionservice.viewQuestions());
@@ -29,6 +31,7 @@ public class QuestionController {
 	}
 
 	@RequestMapping("/addingQuestion")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView openPage() {
 		ModelAndView modelandview=new ModelAndView();
 		modelandview.setViewName("createQuestion");
@@ -36,6 +39,7 @@ public class QuestionController {
 	}
 	
 	@PostMapping(value="addQuestion")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView addingQuestion(QuestionDTO questiondto) {
 		ModelAndView modelandview=new ModelAndView();
 		questionservice.insertQuestion(questiondto);
@@ -45,6 +49,7 @@ public class QuestionController {
 	}
 
 	@RequestMapping("/deleteQuestion")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView deleteQuestionPage() {
 		ModelAndView modelandview=new ModelAndView();
 		modelandview.setViewName("deleteQuestion");
@@ -53,6 +58,7 @@ public class QuestionController {
 	}
 	
 	@PostMapping(value="removeQuestion")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView deletingQuestion(Integer questionNumber) {
 		ModelAndView modelandview=new ModelAndView();
 		questionservice.deleteQuestion(questionNumber);
@@ -61,6 +67,7 @@ public class QuestionController {
 	}
 
 	@RequestMapping("/questionModification")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView questionModificationPage(){
 		ModelAndView modelAndView=new ModelAndView();
 		modelAndView.setViewName("questionModificationPage");
@@ -69,13 +76,21 @@ public class QuestionController {
 
 	
 	@RequestMapping("/modifyQuestion")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView modifyQuestionPage() {
 		ModelAndView modelandview=new ModelAndView();
 		modelandview.setViewName("modifyQuestionPage");
 		return modelandview;
 	}
-	
+
+	@PostMapping("/modifyexistquestion")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+	public ModelAndView modifyQuestion(){
+		ModelAndView modelAndView=new ModelAndView();
+		return modelAndView;
+	}
 	@PostMapping(value="modifyquestion")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView modifyQuestion(Integer questionNumber,String newQuestion) {
 		ModelAndView modelandview=new ModelAndView();
 		boolean response=questionservice.modifyQuestion(questionNumber,newQuestion);
@@ -92,6 +107,7 @@ public class QuestionController {
 
 	
 	@RequestMapping("/modifyDifficulty")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView modifyDifficultyPage() {
 		ModelAndView modelandview=new ModelAndView();
 		modelandview.setViewName("modifyDifficultyPage");
@@ -99,6 +115,7 @@ public class QuestionController {
 	}
 	
 	@PostMapping(value="modifydifficulty")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView modifyDifficulty(Integer questionNumber,String newDifficulty) {
 		ModelAndView modelandview=new ModelAndView();
 		boolean response=questionservice.modifyDifficulty(questionNumber,newDifficulty);
@@ -114,6 +131,7 @@ public class QuestionController {
 
 
 	@RequestMapping("/modifyMarks")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView modifyMarksPage() {
 		ModelAndView modelandview=new ModelAndView();
 		modelandview.setViewName("modifyMarksPage");
@@ -121,6 +139,7 @@ public class QuestionController {
 	}
 	
 	@PostMapping(value="modifymarks")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView modifyMarks(Integer questionNumber,Integer newMarks) {
 		ModelAndView modelandview=new ModelAndView();
 		boolean response=questionservice.modifyMarks(questionNumber,newMarks);
@@ -136,6 +155,7 @@ public class QuestionController {
 
 	
 	@RequestMapping("/modifyOptions")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView modifyOptionsPage() {
 		ModelAndView modelandview=new ModelAndView();
 		modelandview.setViewName("modifyOptionsPage");
@@ -143,6 +163,7 @@ public class QuestionController {
 	}
 	
 	@PostMapping(value="modifyoptions")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView modifyOptions( ArrayList<OptionsDTO> option, @RequestParam(name="questionNumber") Integer questionNumber) {
 		ModelAndView modelandview=new ModelAndView();
 		boolean response=questionservice.modifyOptions(questionNumber,option);
