@@ -28,7 +28,7 @@ public class AuthenticationApiController {
     private UserDetailsService userDetailsService;
 
     @PostMapping(value="/authenticate")
-    public ResponseEntity<AuthenticationResponse> createAuthenticationNewToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
+    public ResponseEntity<?> createAuthenticationNewToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
         System.out.println("in cont");
 
         try{

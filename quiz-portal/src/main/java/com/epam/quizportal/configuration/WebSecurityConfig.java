@@ -63,7 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //               .anyRequest().authenticated().and().formLogin().loginPage("/userLogin").permitAll()
 //               .successForwardUrl("/userValidation");
 
-        http.csrf().disable().authorizeRequests().antMatchers("/","/register","/signUp","/authenticate").permitAll()
+        http.csrf().disable().authorizeRequests().antMatchers("/","/register","/signUp","/authenticate","/userLogin","/userValidation").permitAll()
                 .anyRequest().authenticated().and().exceptionHandling().and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
