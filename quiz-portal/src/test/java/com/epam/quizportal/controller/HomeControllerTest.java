@@ -5,15 +5,21 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import com.epam.quizportal.dao.AuthGroupRepository;
+import com.epam.quizportal.dao.QuestionRepository;
 import com.epam.quizportal.dto.UserDTO;
+import com.epam.quizportal.util.JwtUtil;
+import com.epam.quizportal.service.QuestionService;
 import com.epam.quizportal.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.mock.web.MockHttpSession;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,6 +34,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(controllers =HomeController.class)
+@WithMockUser(username = "abc" , roles = {"ADMIN"})
+@AutoConfigureMockMvc(addFilters = false)
 class HomeControllerTest {
 
 	@Autowired
@@ -35,6 +43,21 @@ class HomeControllerTest {
 
 	@MockBean
 	UserService userService;
+
+	@MockBean
+	AuthGroupRepository authGroupRepository;
+
+	@MockBean
+	QuestionService questionService;
+
+	@MockBean
+	QuestionRepository questionRepository;
+
+	@MockBean
+	JwtUtil jwtUtil;
+
+	@MockBean
+	HomeController homeController;
 
 	@Test
 	void test() {
@@ -45,11 +68,12 @@ class HomeControllerTest {
 	}
 
 	@Test
-	void testUserPage() throws Exception {
-		HomeController homecontroller=new HomeController();
-		assertEquals("user",homecontroller.userPage());
-		mockMvc.perform(get("/userLogin")).andExpect(status().isOk()).andExpect(view().name("userLogin"));
+	void homePage() throws Exception {
+		when(homeController.homePage()).thenReturn("homePage");
+		mockMvc.perform(get("/home")).andExpect(status().isOk());
 	}
+
+
 
 
 	@Test
@@ -88,9 +112,7 @@ class HomeControllerTest {
 		UserDTO user = new UserDTO();
 		user.setUsername("user");
 		user.setPassword("pass");
-		HomeController homecontroller = new HomeController();
-		when(userService.register(user)).thenReturn(true);
+		when(userService.register(user)).thenReturn(false);
 		mockMvc.perform(post("/register")).andExpect(status().isOk()).andExpect(view().name("signUp"));
-
 	}
 }

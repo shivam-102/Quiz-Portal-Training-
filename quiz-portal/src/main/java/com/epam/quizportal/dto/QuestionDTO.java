@@ -39,4 +39,13 @@ public class QuestionDTO {
 		this.option = option;
 	}
 
+	@Override
+	public String toString() {
+		return "QuestionDTO{" +
+				"questionId=" + questionId +
+				", question='" + question + '\'' +
+				", difficulty='" + difficulty + '\'' +
+				", marks=" + marks +
+				'}';
+	}
 }

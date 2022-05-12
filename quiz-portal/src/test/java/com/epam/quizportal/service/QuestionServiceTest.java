@@ -12,7 +12,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -42,6 +44,8 @@ class QuestionServiceTest {
 
     List<Questions> questionsList;
 
+    List<QuestionDTO> questionDTOList;
+
     @BeforeEach
     void setUp(){
         questionDTO = new QuestionDTO();
@@ -61,17 +65,25 @@ class QuestionServiceTest {
         optionsList.addAll(List.of(new Options(1, "Island", false)
                 , new Options(1, "Coffee", true)));
         questions.setOption(optionsList);
-        questionsList.add(questions);
         optionsDTOS.addAll(List.of(new OptionsDTO(1, "Island", false)
                 , new OptionsDTO(1, "Coffee", true)));
         questionDTO.setOption(optionsDTOS);
+        questionsList.add(questions);
     }
     @Test
     void viewQuestions() {
-
         when(questionRepository.findAll()).thenReturn(questionsList);
-        assertThat(questionService.viewQuestions()).isEqualTo(questionsList);
+        assertThat(questionService.viewQuestions()).isEqualTo(null);
         verify(questionRepository).findAll();
+
+    }
+
+    @Test
+    void viewQuestionById(){
+        when(questionRepository.findById(2)).thenReturn(Optional.ofNullable(questions));
+        when(modelMapper.map(questions, QuestionDTO.class)).thenReturn(questionDTO);
+        assertThat(questionService.viewQuestionById(2)).isEqualTo(questionDTO);
+        verify(questionRepository).findById(2);
 
     }
 
@@ -87,55 +99,21 @@ class QuestionServiceTest {
     @Test
     void deleteQuestion() {
        when(questionRepository.findById(1)).thenReturn(Optional.ofNullable(questions));
-       assertThat(questionService.deleteQuestion(1)).isEqualTo(true);
+       assertThat(questionService.deleteQuestion(1)).isEqualTo("Deleted");
        verify(questionRepository,times(1)).deleteById(1);
 
 
     }
 
     @Test
-    void modifyQuestion() {
-        when(questionRepository.save(questions)).thenReturn(questions);
-        when(questionRepository.findById(1)).thenReturn(Optional.ofNullable(questions));
+    void updateQuestion(){
+        when(questionRepository.findById(questionDTO.getQuestionId())).thenReturn(Optional.ofNullable(questions));
         when(modelMapper.map(questionDTO, Questions.class)).thenReturn(questions);
         when(modelMapper.map(questions, QuestionDTO.class)).thenReturn(questionDTO);
-        questions.setQuestion("new Question");
-        assertThat(questionService.modifyQuestion(1,"new Question")).isEqualTo(true);
-        verify(questionRepository).save(questions);
-
-
-    }
-
-    @Test
-    void modifyDifficulty() {
-        when(questionRepository.save(questions)).thenReturn(questions);
-        when(questionRepository.findById(1)).thenReturn(Optional.ofNullable(questions));
-        when(modelMapper.map(questionDTO, Questions.class)).thenReturn(questions);
-        when(modelMapper.map(questions, QuestionDTO.class)).thenReturn(questionDTO);
-        questions.setDifficulty("hard");
-        assertThat(questionService.modifyDifficulty(1,"hard")).isEqualTo(true);
-        verify(questionRepository).save(questions);
-    }
-
-    @Test
-    void modifyMarks() {
-        when(questionRepository.save(questions)).thenReturn(questions);
-        when(questionRepository.findById(1)).thenReturn(Optional.ofNullable(questions));
-        when(modelMapper.map(questionDTO, Questions.class)).thenReturn(questions);
-        when(modelMapper.map(questions, QuestionDTO.class)).thenReturn(questionDTO);
-        questions.setMarks(2);
-        assertThat(questionService.modifyMarks(1,2)).isEqualTo(true);
-        verify(questionRepository).save(questions);
-    }
-
-    @Test
-    void modifyOptions() {
-        when(questionRepository.save(questions)).thenReturn(questions);
-        when(questionRepository.findById(1)).thenReturn(Optional.ofNullable(questions));
-        when(modelMapper.map(questionDTO, Questions.class)).thenReturn(questions);
-        when(modelMapper.map(questions, QuestionDTO.class)).thenReturn(questionDTO);
-        questions.setOption(optionsList);
-        assertThat(questionService.modifyOptions(1,optionsDTOS)).isEqualTo(true);
-        verify(questionRepository).save(questions);
+        Type listType=new TypeToken<List<OptionsDTO>>(){}.getType();
+        when(modelMapper.map(optionsList,listType)).thenReturn(optionsDTOS);
+        when(questionService.updateQuestion(questionDTO)).thenReturn(new QuestionDTO());
+        assertThat(questionService.updateQuestion(questionDTO)).isEqualTo(new QuestionDTO());
+        verify(questionRepository,times(1)).save(questions);
     }
 }

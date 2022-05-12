@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
 import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -59,15 +58,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//       http.csrf().disable().authorizeRequests().antMatchers("/","/register","/signUp").permitAll()
-//               .anyRequest().authenticated().and().formLogin().loginPage("/userLogin").permitAll()
-//               .successForwardUrl("/userValidation");
+       http.csrf().disable().authorizeRequests().antMatchers("/","/register","/signUp").permitAll()
+               .anyRequest().authenticated().and().formLogin().loginPage("/userLogin").permitAll()
+               .successForwardUrl("/userValidation");
 
-        http.csrf().disable().authorizeRequests().antMatchers("/","/register","/signUp","/authenticate","/userLogin","/userValidation").permitAll()
-                .anyRequest().authenticated().and().exceptionHandling().and().sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
-        http.addFilterAfter(jwtRequestFilter,UsernamePasswordAuthenticationFilter.class);
+//        http.csrf().disable().authorizeRequests()antMatchers.antMatchers("/","/authenticate","/register").permitAll()
+//                .anyRequest().authenticated().and().exceptionHandling().and().sessionManagement()
+//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//        http.addFilterAfter(jwtRequestFilter,UsernamePasswordAuthenticationFilter.class);
     }
 
 }

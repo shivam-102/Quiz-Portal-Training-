@@ -19,7 +19,7 @@ public class QuizController {
 	@Autowired
 	private QuizService quizservice;
 
-	private static final String SUCCESS="success";
+	private static final String SUCCESS="successQuiz";
 
 	@RequestMapping("/insertCode")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")

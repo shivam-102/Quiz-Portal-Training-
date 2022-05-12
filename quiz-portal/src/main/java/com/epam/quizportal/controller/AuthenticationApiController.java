@@ -3,7 +3,7 @@ package com.epam.quizportal.controller;
 
 import com.epam.quizportal.dto.AuthenticationRequest;
 import com.epam.quizportal.dto.AuthenticationResponse;
-import com.epam.quizportal.service.JwtUtil;
+import com.epam.quizportal.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,7 +29,6 @@ public class AuthenticationApiController {
 
     @PostMapping(value="/authenticate")
     public ResponseEntity<?> createAuthenticationNewToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
-        System.out.println("in cont");
 
         try{
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(),authenticationRequest.getPassword()));

@@ -1,4 +1,4 @@
-package com.epam.quizportal.RestController;
+package com.epam.quizportal.exceptionhandler;
 
 import com.epam.quizportal.Exception.QuestionNotFoundException;
 import com.epam.quizportal.Exception.QuizNotFoundException;

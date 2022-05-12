@@ -1,4 +1,4 @@
-package com.epam.quizportal.service;
+package com.epam.quizportal.util;
 
 import java.util.Date;
 import java.util.HashMap;

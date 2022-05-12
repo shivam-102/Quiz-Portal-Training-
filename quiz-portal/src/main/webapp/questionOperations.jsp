@@ -10,6 +10,6 @@
 <a href="viewAvailableQuestions">View questions in the database</a><br>
 <a href="addingQuestion">Create New Questions to add to the database</a><br>
 <a href="deleteQuestion">Delete question from the database</a><br>
-<a href="questionModificationPage">Modify Existing questions in the database</a><br>
+<a href="getQuestion">Modify Existing questions in the database</a><br>
 </body>
 </html>
