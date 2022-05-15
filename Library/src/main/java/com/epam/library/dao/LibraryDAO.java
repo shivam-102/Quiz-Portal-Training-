@@ -7,5 +7,4 @@ public interface LibraryDAO extends JpaRepository<LibraryEntity,Integer> {
 
     LibraryEntity findByUsernameAndBookId(String username,Integer bookId);
 
-    void deleteAllByBookId(Integer bookId);
 }
