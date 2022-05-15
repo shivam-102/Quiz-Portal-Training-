@@ -1,7 +1,6 @@
 package com.epam.quizportal.controller;
 
 import com.epam.quizportal.dto.AuthenticationRequest;
-import com.epam.quizportal.service.UserService;
 import com.epam.quizportal.util.JwtUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.assertj.core.api.Assertions;

@@ -99,7 +99,6 @@ class HomeControllerTest {
 
 	@Test
 	void usersignUpPage() throws Exception {
-
 		HomeController homecontroller=new HomeController();
 		ModelAndView modelandview=homecontroller.usersignUpPage();
 		assertEquals("signUp",modelandview.getViewName());
@@ -112,6 +111,7 @@ class HomeControllerTest {
 		UserDTO user = new UserDTO();
 		user.setUsername("user");
 		user.setPassword("pass");
+		ModelAndView modelAndView=homeController.usersignUpPage();
 		when(userService.register(user)).thenReturn(false);
 		mockMvc.perform(post("/register")).andExpect(status().isOk()).andExpect(view().name("signUp"));
 	}
