@@ -14,14 +14,13 @@ public class UserController {
     UserClients userClients;
 
     @GetMapping()
-    public List<UserDTO> getUsers(){
-        return userClients.getUsers().getBody();
+    public ResponseEntity<List<UserDTO>> getUsers(){
+        return new ResponseEntity<>(userClients.getUsers(),HttpStatus.OK);
     }
 
-    //ParameterTypeReference
     @GetMapping("/{username}")
-    public UserDTO getUserById(@PathVariable String username){
-        return userClients.getUserById(username).getBody();
+    public ResponseEntity<UserDTO> getUserById(@PathVariable String username){
+        return new ResponseEntity<>(userClients.getUserById(username).getBody(),HttpStatus.OK);
     }
 
     @PostMapping()

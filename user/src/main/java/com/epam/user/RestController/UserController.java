@@ -23,7 +23,7 @@ public class UserController {
 
     @GetMapping("/{username}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable("username") String username){
-        return new ResponseEntity<>(userService.getUserById(username),HttpStatus.FOUND);
+        return new ResponseEntity<>(userService.getUserById(username),HttpStatus.OK);
     }
 
     @PostMapping()
@@ -39,8 +39,7 @@ public class UserController {
 
     @PutMapping("/{username}")
     public ResponseEntity<UserDTO> updateUser(@PathVariable("username") String username, @RequestBody UserDTO userDTO){
-        return new ResponseEntity<>(userService.updateUser(username,userDTO),HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(userService.updateUser(username,userDTO),HttpStatus.OK);
     }
-
 
 }

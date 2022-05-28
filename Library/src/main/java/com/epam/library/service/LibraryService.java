@@ -26,13 +26,12 @@ public class LibraryService {
        }
        LibraryEntity libraryEntity=modelMapper.map(libraryDTO,LibraryEntity.class);
        return modelMapper.map(libraryDAO.save(libraryEntity),LibraryDTO.class);
-
     }
 
-    public void releaseBook(Integer bookId, String username){
+    public boolean releaseBook(Integer bookId, String username){
         Optional<LibraryEntity> optional=Optional.ofNullable(libraryDAO.findByUsernameAndBookId(username,bookId));
         LibraryEntity library=optional.orElseThrow( () -> new BookNotIssuedException());
         libraryDAO.delete(library);
-
+        return true;
     }
 }

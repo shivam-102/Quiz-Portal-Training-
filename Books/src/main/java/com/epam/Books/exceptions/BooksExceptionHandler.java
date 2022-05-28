@@ -1,4 +1,4 @@
-package com.epam.Books.RestController;
+package com.epam.Books.exceptions;
 
 import com.epam.Books.Exception.BookNotFoundException;
 import org.springframework.http.HttpStatus;

@@ -50,20 +50,13 @@ public class UserService {
         return true;
     }
 
-    public void delete(String username){
-        Optional<Users> optionalUsers=userRepository.findById(username);
-        Users user=optionalUsers.orElseThrow( ()-> new UserDoesNotExistException());
-    }
-
     public UserDTO updateUser(String userId,UserDTO userDTO){
         Optional<Users> optionalUsers=userRepository.findById(userId);
         Users user=optionalUsers.orElseThrow( ()-> new UserDoesNotExistException());
         user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
-
         return modelMapper.map(user,UserDTO.class);
     }
-
 
 
 }

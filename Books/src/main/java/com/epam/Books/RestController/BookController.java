@@ -26,7 +26,7 @@ public class BookController {
 
     @GetMapping("/{id}")
     public ResponseEntity<BookDTO> getBookById(@PathVariable("id") Integer id){
-        return new ResponseEntity<>(bookService.getBookById(id), HttpStatus.FOUND);
+        return new ResponseEntity<>(bookService.getBookById(id), HttpStatus.OK);
     }
 
     @PostMapping()
@@ -42,7 +42,7 @@ public class BookController {
 
     @PutMapping("/{id}")
     public ResponseEntity<BookDTO> updateBook(@PathVariable("id") Integer id, @RequestBody BookDTO bookDTO){
-        return new ResponseEntity<>(bookService.updateBook(id,bookDTO),HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(bookService.updateBook(id,bookDTO),HttpStatus.OK);
     }
 
 }

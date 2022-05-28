@@ -37,10 +37,11 @@ public class BookService {
     }
 
 
-    public void delete(Integer id) {
+    public BookDTO delete(Integer id) {
         Optional<Book> optionalBook = bookRepository.findById(id);
         Book book = optionalBook.orElseThrow( () -> new BookNotFoundException());
         bookRepository.delete(book);
+        return modelMapper.map(book,BookDTO.class);
 
     }
 

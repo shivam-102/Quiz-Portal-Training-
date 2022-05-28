@@ -1,4 +1,4 @@
-package com.epam.library.Controller;
+package com.epam.library.exceptionhandler;
 
 import com.epam.library.exception.BookAlreadyIssuedException;
 import com.epam.library.exception.BookNotIssuedException;
@@ -6,8 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import javax.validation.Valid;
 
 @RestControllerAdvice
 public class LibraryExceptionHandler {

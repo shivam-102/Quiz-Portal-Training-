@@ -11,21 +11,18 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/library/books")
 public class BookController {
+
     @Autowired
     BookClient bookClient;
 
     @GetMapping()
     public ResponseEntity<List<BookDTO>> getBooks(){
         return new ResponseEntity<>(bookClient.getBooks().getBody(),HttpStatus.OK);
-
     }
 
     @GetMapping("/{bookId}")
-    public BookDTO getBookById(@PathVariable Integer bookId){
-//        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-//        HttpEntity<String> entity=new HttpEntity<>(httpHeaders);
-//        return restTemplate.exchange(BOOK_BASE_URL+"{bookId}",HttpMethod.GET,entity,String.class,bookId).getBody();
-          return bookClient.getBookById(bookId).getBody();
+    public ResponseEntity<BookDTO> getBookById(@PathVariable Integer bookId){
+          return ResponseEntity.ok(bookClient.getBookById(bookId));
     }
 
     @PostMapping()

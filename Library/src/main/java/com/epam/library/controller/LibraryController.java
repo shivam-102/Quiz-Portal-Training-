@@ -1,4 +1,4 @@
-package com.epam.library.Controller;
+package com.epam.library.controller;
 
 
 import com.epam.library.DTO.LibraryDTO;
@@ -17,6 +17,8 @@ public class LibraryController {
 
     @PostMapping("/users/{username}/books/{bookId}")
     public ResponseEntity<LibraryDTO> issueBook(@PathVariable("username") String username, @PathVariable("bookId") Integer bookId , @RequestBody LibraryDTO libraryDTO){
+        libraryDTO.setUsername(username);
+        libraryDTO.setBookId(bookId);
         return new ResponseEntity<>(libraryService.issueBook(libraryDTO), HttpStatus.CREATED);
     }
 

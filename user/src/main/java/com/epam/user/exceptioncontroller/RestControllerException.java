@@ -1,4 +1,4 @@
-package com.epam.user.RestController;
+package com.epam.user.exceptioncontroller;
 
 
 import com.epam.user.Exception.UserDoesNotExistException;
