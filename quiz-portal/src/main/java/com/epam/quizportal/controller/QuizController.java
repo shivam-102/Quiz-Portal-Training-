@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +19,10 @@ public class QuizController {
 	@Autowired
 	private QuizService quizservice;
 
-	private static final String SUCCESS="success";
+	private static final String SUCCESS="successQuiz";
 
 	@RequestMapping("/insertCode")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView viewQuiz(){
 		ModelAndView modelandview=new ModelAndView();
 		modelandview.setViewName("codeInsertPage");
@@ -28,6 +30,7 @@ public class QuizController {
 	}
 
 	@PostMapping(value="questionsInTheQuiz")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView viewQuizInsertCode(Integer code) {
 		ModelAndView modelandview=new ModelAndView();
 		modelandview.addObject("quiz",quizservice.viewQuiz(code));
@@ -37,6 +40,7 @@ public class QuizController {
 
 
 	@RequestMapping("/createQuiz")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView createQuizPage() {
 		ModelAndView modelandview=new ModelAndView();
 		modelandview.setViewName("createQuizPage");
@@ -44,6 +48,7 @@ public class QuizController {
 	}
 
 	@PostMapping(value="createnewquiz")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView createQuiz(String questionsids) {
 		ModelAndView modelandview= new ModelAndView();
 		List<Integer> questionList = Stream.of(questionsids.split(","))
@@ -56,6 +61,7 @@ public class QuizController {
 	}
 
 	@RequestMapping("/modificationAddOperation")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView modificationAddQuestionPage() {
 		ModelAndView modelandview=new ModelAndView();
 		modelandview.setViewName("modifyAddPage");
@@ -63,6 +69,7 @@ public class QuizController {
 	}
 
 	@PostMapping(value="addQuestionToQuiz")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView modificationAddQuestion(Integer code,Integer questionToAdd) {
 		ModelAndView modelandview=new ModelAndView();
 		quizservice.addQuestionToQuiz(code, questionToAdd);
@@ -71,6 +78,7 @@ public class QuizController {
 	}
 
 	@RequestMapping("/modificationDeleteOperation")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView modificationDeleteQuestionPage() {
 		ModelAndView modelandview=new ModelAndView();
 		modelandview.setViewName("modifyDeletePage");
@@ -78,6 +86,7 @@ public class QuizController {
 	}
 
 	@PostMapping(value="deleteQuestionfromQuiz")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public ModelAndView modificationDeleteQuestion(Integer code,Integer questionToDelete) {
 		ModelAndView modelandview=new ModelAndView();
 		quizservice.deleteQuestionFromQuiz(code, questionToDelete);

@@ -1,14 +1,14 @@
 package com.epam.quizportal.service;
 
+import com.epam.quizportal.dao.AuthGroupRepository;
 import com.epam.quizportal.dao.UserDAO;
 import com.epam.quizportal.dao.UserRepository;
 import com.epam.quizportal.dto.UserDTO;
 import com.epam.quizportal.dto.UserPrincipal;
+import com.epam.quizportal.entity.AuthGroup;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.epam.quizportal.entity.User;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,6 +29,9 @@ public class UserService implements UserDetailsService {
 	UserDAO userDAO;
 	@Autowired
 	UserRepository userRepository;
+
+	@Autowired
+	AuthGroupRepository authGroupRepository;
 
 	@Autowired
 	ModelMapper modelMapper;
@@ -63,13 +67,11 @@ public class UserService implements UserDetailsService {
 
 		User user=userDAO.findByUsername(username);
 
-
 		if(user==null){
 			throw new UsernameNotFoundException("User not registered");
 
 		}
-		return new UserPrincipal(user);
-
-
+		List<AuthGroup> authorities=authGroupRepository.findByUsername(username);
+		return new UserPrincipal(user,authorities);
 	}
 }

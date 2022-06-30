@@ -1,11 +1,15 @@
 package com.epam.quizportal.controller;
 
+import com.epam.quizportal.dao.AuthGroupRepository;
 import com.epam.quizportal.dto.QuestionDTO;
+import com.epam.quizportal.util.JwtUtil;
 import com.epam.quizportal.service.QuestionService;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+
+import com.epam.quizportal.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +21,11 @@ import org.springframework.web.servlet.ModelAndView;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import org.springframework.security.test.context.support.WithMockUser;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(controllers =QuestionController.class)
+@WithMockUser(username = "abc" , roles = {"ADMIN"})
 class QuestionControllerTest {
 
     @Autowired
@@ -27,6 +33,15 @@ class QuestionControllerTest {
 
     @MockBean
     QuestionService questionService;
+
+    @MockBean
+    AuthGroupRepository authGroupRepository;
+
+    @MockBean
+    UserService userService;
+
+    @MockBean
+    JwtUtil jwtUtil;
 
     @Test
     void viewQuestion() throws Exception {
@@ -60,53 +75,25 @@ class QuestionControllerTest {
 
     @Test
     void deletingQuestion() throws Exception {
-        int mockQuestionId=1;
-        //when(questionService.deleteQuestion(mockQuestionId)).thenReturn(true);
-        mockMvc.perform(post("/modifyQuestion")).andExpect(view().name("modifyQuestionPage"));
-    }
-
-    @Test
-    void questionModificationPage() throws Exception {
+        when(questionService.deleteQuestion(2)).thenReturn("deleted");
         mockMvc.perform(post("/removeQuestion")).andExpect(view().name("success"));
     }
 
     @Test
-    void modifyQuestionPage() throws Exception {
-        mockMvc.perform(get("/questionModification")).andExpect(status().isOk()).andExpect(view().name("questionModificationPage"));
-
+    void getQuestionPage() throws Exception {
+        mockMvc.perform(get("/getQuestion")).andExpect(status().isOk()).andExpect(view().name("getQuestionPage"));
     }
 
     @Test
-    void modifyQuestion() throws Exception {
-        when(questionService.modifyQuestion(1,"newQuestion")).thenReturn(true);
-        mockMvc.perform(post("/modifyquestion")).andExpect(status().isOk()).andExpect(view().name("modifyQuestionPage"));
+    void getQuestion() throws Exception {
+        when(questionService.viewQuestionById(2)).thenReturn(new QuestionDTO());
+        mockMvc.perform(post("/fetchQuestionById")).andExpect(status().isOk()).andExpect(view().name("updateQuestionPage"));
     }
 
     @Test
-    void modifyDifficultyPage() throws Exception {
-        mockMvc.perform(get("/modifyDifficulty")).andExpect(status().isOk()).andExpect(view().name("modifyDifficultyPage"));
-    }
-
-    @Test
-    void modifyDifficulty() throws Exception {
-        when(questionService.modifyDifficulty(1,"hard")).thenReturn(true);
-        mockMvc.perform(post("/modifydifficulty")).andExpect(status().isOk()).andExpect(view().name("modifyDifficultyPage"));
-    }
-
-    @Test
-    void modifyMarksPage() throws Exception {
-        mockMvc.perform(get("/modifyMarks")).andExpect(status().isOk()).andExpect(view().name("modifyMarksPage"));
-    }
-
-    @Test
-    void modifyMarks() throws Exception {
-        when(questionService.modifyMarks(1,2)).thenReturn(true);
-        mockMvc.perform(post("/modifymarks")).andExpect(status().isOk()).andExpect(view().name("modifyMarksPage"));
-    }
-
-    @Test
-    void modifyOptionsPage() throws Exception {
-        mockMvc.perform(get("/modifyOptions")).andExpect(status().isOk()).andExpect(view().name("modifyOptionsPage"));
+    void updateQuestionPage() throws Exception {
+        when(questionService.updateQuestion(new QuestionDTO())).thenReturn(new QuestionDTO());
+        mockMvc.perform(post("/updateQuestion")).andExpect(status().isOk()).andExpect(view().name("success"));
     }
 
 }

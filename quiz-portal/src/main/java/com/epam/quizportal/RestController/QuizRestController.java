@@ -27,17 +27,17 @@ public class QuizRestController {
                .map(String::trim)
                .map(Integer::parseInt)
                .collect(Collectors.toList());
-        return new ResponseEntity<QuizDTO>(quizService.createQuiz(questionIdList),HttpStatus.CREATED);
+        return new ResponseEntity<>(quizService.createQuiz(questionIdList),HttpStatus.CREATED);
     }
 
     @PutMapping("/{quiz-code}/{question-number}")
     public ResponseEntity<QuizDTO> addQuestionToQuiz(@PathVariable("quiz-code")Integer code,@PathVariable("question-number")Integer questionNumber){
-        return new ResponseEntity<QuizDTO>(quizService.addQuestionToQuiz(code, questionNumber),HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(quizService.addQuestionToQuiz(code, questionNumber),HttpStatus.ACCEPTED);
     }
 
     @PutMapping("/deletequestion/{quiz-code}/{question-number}")
     public ResponseEntity<QuizDTO> deleteQuestionFromQuiz(@PathVariable("quiz-code")int code,@PathVariable("question-number")Integer questionNumber){
-        return new ResponseEntity<QuizDTO>(quizService.deleteQuestionFromQuiz(code,questionNumber),HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(quizService.deleteQuestionFromQuiz(code,questionNumber),HttpStatus.NO_CONTENT);
     }
 
 }

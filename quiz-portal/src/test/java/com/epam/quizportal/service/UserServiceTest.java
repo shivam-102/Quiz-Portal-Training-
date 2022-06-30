@@ -1,5 +1,6 @@
 package com.epam.quizportal.service;
 
+import com.epam.quizportal.dao.UserDAO;
 import com.epam.quizportal.dao.UserRepository;
 import com.epam.quizportal.dto.UserDTO;
 import com.epam.quizportal.entity.Quiz;
@@ -11,7 +12,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.*;
 import java.util.Optional;
 import static org.mockito.Mockito.when;
@@ -24,6 +28,9 @@ class UserServiceTest {
 
     @Mock
     ModelMapper modelMapper;
+
+    @Mock
+    UserDAO userDAO;
 
     @InjectMocks
     UserService userService;
@@ -61,5 +68,11 @@ class UserServiceTest {
         assertThat(userService.register(userDTO)).isEqualTo(true);
         verify(userRepository).save(user);
 
+    }
+
+    @Test
+    void loadUserByUsernameInvalid(){
+        when(userDAO.findByUsername("shivam")).thenReturn(null);
+        assertThrows(UsernameNotFoundException.class,() -> userService.loadUserByUsername("shivam"));
     }
 }

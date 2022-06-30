@@ -8,6 +8,6 @@
 </head>
 <body>
 <h2>Success</h2>
-<a href="questionOperations.jsp">Question Operations</a>
+<a href="quizOperations.jsp">Question Operations</a>
 </body>
 </html>

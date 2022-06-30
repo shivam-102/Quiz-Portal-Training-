@@ -3,7 +3,6 @@ package com.epam.quizportal.RestController;
 
 import com.epam.quizportal.dto.QuestionDTO;
 import com.epam.quizportal.service.QuestionService;
-import org.aspectj.weaver.patterns.TypePatternQuestions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
