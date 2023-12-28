@@ -31,6 +31,12 @@ public class HomeController {
         return modelandview;
     }
 
+    @RequestMapping("/forPassword")
+    public ModelAndView forPasswordPage(){
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.setViewName("forgotPassword");
+        return modelAndView;
+    }
     @PostMapping(value = "/userValidation")
     public ModelAndView userVerification( HttpServletRequest request) {
         ModelAndView modelandview = new ModelAndView();
@@ -47,13 +53,26 @@ public class HomeController {
         return modelandview;
     }
 
+    @PostMapping(value="/forgotPassword")
+    public ModelAndView forgotPassword(String username){
+        ModelAndView modelAndView=new ModelAndView();
+        boolean response=userservice.newPassword(username);
+        if(response==true){
+            modelAndView.setViewName("userLogin");
+
+            return modelAndView;
+
+        }
+
+        return modelAndView;
+    }
+
     @RequestMapping("/home")
     public String homePage(){
         return "homePage";
     }
 
     @RequestMapping("/signUp")
-
     public ModelAndView usersignUpPage() {
         ModelAndView modelandview = new ModelAndView();
         modelandview.setViewName("signUp");

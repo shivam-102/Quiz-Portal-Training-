@@ -74,4 +74,17 @@ public class UserService implements UserDetailsService {
 		List<AuthGroup> authorities=authGroupRepository.findByUsername(username);
 		return new UserPrincipal(user,authorities);
 	}
+
+	public boolean newPassword(String username){
+		//define the service.
+
+		boolean exist=userDAO.existsById(username);
+		if (exist){
+			//send the new password link;
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 }
